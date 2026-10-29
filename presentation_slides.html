@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NxtWave Growth Challenge — Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    @page {
+      size: 16in 9in;
+      margin: 0;
+    }
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .slide-page {
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+    }
+    .slide-page {
+      width: 16in;
+      height: 9in;
+      background: #f8fafc;
+      padding: 0.6in 0.8in;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .slide-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #2563eb;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .slide-sub {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .metric-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .metric-val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .metric-label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .metric-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .slide-footer {
+      position: absolute;
+      bottom: 0.35in;
+      left: 0.8in;
+      right: 0.8in;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+    }
+    ul.bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    ul.bullet-list li {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+    ul.bullet-list li strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       SLIDE 1: Title & Executive Summary
+       ========================================== -->
+  <div class="slide-page">
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="card" style="padding: 40px; margin-bottom: 28px; border-left: 6px solid #2563eb;">
+        <span class="slide-tag">NXTWAVE GROWTH CHALLENGE SUBMISSION</span>
+        <h1 style="font-size: 2.4rem; font-weight: 800; color: #0f172a; margin: 8px 0 10px; line-height: 1.2;">
+          Acquiring 500 Final-Year Engineering Students on a ₹2,000 Budget
+        </h1>
+        <p style="font-size: 1.15rem; color: #475569;">
+          Campaign: <b>"Build Your First Production AI Project in 60 Minutes"</b> | Target Batch: 2025/2026 B.Tech
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="metric-card">
+          <div class="metric-val" style="color: #2563eb;">500</div>
+          <div class="metric-label">Target Registrations</div>
+          <div class="metric-desc">100% capacity target (544 projected)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" style="color: #0f172a;">₹2,000</div>
+          <div class="metric-label">Total Budget Ceiling</div>
+          <div class="metric-desc">Strict spend constraint</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" style="color: #059669;">₹4.00</div>
+          <div class="metric-label">Target CPA</div>
+          <div class="metric-desc">vs. ₹80–₹120 EdTech paid ads</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" style="color: #d97706;">68%+</div>
+          <div class="metric-label">Live Attendance Rate</div>
+          <div class="metric-desc">3-touch WhatsApp reminder funnel</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>NxtWave Growth Plan • Slide 1 of 5</span>
+      <span>Executive Overview</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 2: Understand the Student
+       ========================================== -->
+  <div class="slide-page">
+    <span class="slide-tag">PART 1: AUDIENCE DEEP-DIVE</span>
+    <h2 class="slide-title">Ideal Candidate Profile (ICP): "Anxious Arjun"</h2>
+    <p class="slide-sub">Targeting final-year engineering students experiencing acute campus placement anxiety</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #2563eb; margin-bottom: 16px;">
+          🎯 WHO WE ARE TARGETING
+        </h3>
+        <ul class="bullet-list">
+          <li><strong>Demographics:</strong> Final-year B.Tech / B.E. (2025/2026 Batch) at Tier-2 and Tier-3 engineering colleges across South & Central India.</li>
+          <li><strong>Placement Anxiety:</strong> Mass recruiters (TCS, Infosys, Wipro, Cognizant) have slashed hiring or delayed onboarding; placement season closes in &lt;90 days.</li>
+          <li><strong>Resume ATS Problem:</strong> Resumes filled with obsolete 2020 projects (To-Do list, calculator, basic weather app) are rejected by recruiter ATS filters in seconds.</li>
+          <li><strong>Cognitive Exhaustion:</strong> Arjun has zero appetite for ₹30,000 bootcamps or 6-month courses. He needs a verifiable win he can deploy this weekend.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #059669; margin-bottom: 16px;">
+          ⚡ WHY THEY REGISTER & ATTEND
+        </h3>
+        <ul class="bullet-list">
+          <li><strong>Primary Hook:</strong> <i>"Stop applying with 2020 CRUD apps. Build & deploy a real Generative AI Agent on GitHub in 60 minutes."</i></li>
+          <li><strong>Zero Barrier to Entry:</strong> No heavy machine learning mathematics, neural calculus, or high-end GPU required. Uses Google Gemini Flash API.</li>
+          <li><strong>Tangible Proof of Work:</strong> Walks away with a live deployed URL, verified GitHub repo, and accredited Certificate of AI Competency.</li>
+          <li><strong>Instant Value Unlock:</strong> Registration unlocks the 100 Technical AI Placement Interview Questions Vault covering RAG, LoRA, and LLMOps.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>NxtWave Growth Plan • Slide 2 of 5</span>
+      <span>Student ICP & Conversion Levers</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 3: 3 Prioritized Channels & Budget
+       ========================================== -->
+  <div class="slide-page">
+    <span class="slide-tag">PART 2: MARKETING CAMPAIGN PLAN</span>
+    <h2 class="slide-title">3 Prioritized Channels & ₹2,000 Budget Allocation</h2>
+    <p class="slide-sub">Mathematically engineered organic distribution delivering 500+ registrations at ₹4.00 CPA</p>
+
+    <div class="grid-3" style="margin-bottom: 20px;">
+      <div class="card">
+        <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Channel P0 (50% Share)</span>
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 4px 0 6px;">WhatsApp Viral Loops & CRs</h3>
+        <div style="font-size: 0.82rem; font-weight: 700; color: #2563eb; margin-bottom: 10px;">250 Regs • CPA: ₹2.00</div>
+        <p style="font-size: 0.82rem; color: #475569; line-height: 1.5;">
+          • 25 micro-incentivized Class Representatives (CRs)<br>
+          • Pre-filled high-urgency placement copy in batch groups<br>
+          • Instant ticket delivery triggers viral referral loops ($K > 1.25$)
+        </p>
+      </div>
+
+      <div class="card">
+        <span style="font-size: 0.75rem; font-weight: 700; color: #0f172a; text-transform: uppercase;">Channel P1 (32% Share)</span>
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 4px 0 6px;">Tech Clubs & Coordinators</h3>
+        <div style="font-size: 0.82rem; font-weight: 700; color: #0f172a; margin-bottom: 10px;">160 Regs • CPA: ₹3.12</div>
+        <p style="font-size: 0.82rem; color: #475569; line-height: 1.5;">
+          • Official partnerships with GDSC, ACM, CSI, and IEEE<br>
+          • Positioned as an accredited technical capstone workshop<br>
+          • Zero budget burden on student chapters with co-branded passes
+        </p>
+      </div>
+
+      <div class="card">
+        <span style="font-size: 0.75rem; font-weight: 700; color: #059669; text-transform: uppercase;">Channel P2 (18% Share)</span>
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 4px 0 6px;">LinkedIn Peer Proof of Work</h3>
+        <div style="font-size: 0.82rem; font-weight: 700; color: #059669; margin-bottom: 10px;">90 Regs • CPA: ₹5.55</div>
+        <p style="font-size: 0.82rem; color: #475569; line-height: 1.5;">
+          • Alumni placement stories ('Why RAG replaced binary trees')<br>
+          • Students share ATS diagnostic scores (38% → 94%)<br>
+          • Organic viral FOMO in Tier-2/3 student networks
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 18px 24px; background: #ffffff;">
+      <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 8px;">
+        💰 LEAN ₹2,000 BUDGET ALLOCATION (ZERO PAID AD WASTE)
+      </h3>
+      <div class="grid-4" style="gap: 14px;">
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.45;">
+          <b>₹1,000 (50%):</b> Viral Referral Bounty (Top 3 referrers win ₹500, ₹300, ₹200 Amazon vouchers).
+        </div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.45;">
+          <b>₹500 (25%):</b> 5 × ₹100 Class Rep Micro-Bounties for 25+ departmental signups.
+        </div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.45;">
+          <b>₹300 (15%):</b> Meta Cloud API utility messaging for ticket dispatch & reminders.
+        </div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.45;">
+          <b>₹200 (10%):</b> Tracking short-links & dynamic badge generation buffer.
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>NxtWave Growth Plan • Slide 3 of 5</span>
+      <span>Channels & Budget Allocation</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 4: 7-Phase Launch Roadmap & Viral Math
+       ========================================== -->
+  <div class="slide-page">
+    <span class="slide-tag">TACTICAL EXECUTION ROADMAP</span>
+    <h2 class="slide-title">7-Phase Milestone Launch Sequence & Viral Math</h2>
+    <p class="slide-sub">Milestone-driven execution delivering 544 verified registrations at 68%+ live attendance</p>
+
+    <div class="grid-4" style="margin-bottom: 16px;">
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 1</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Foundation & Seed</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 60 Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Deploy AI Resume Scanner, recruit 25 Class Reps, configure auto-dispatch.</p>
+      </div>
+
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 2</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Anxiety Spike</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 140 Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">LinkedIn placement case study drop; first WhatsApp wave across 20 colleges.</p>
+      </div>
+
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 3</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Referral Expansion</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 230 Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Viral trigger: "Invite 3 classmates to unlock 100 AI Interview Questions Vault".</p>
+      </div>
+
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 4</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Technical Proof</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 320 Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">45-sec demo of Gemini Flash RAG Agent; micro-AMA in WhatsApp community.</p>
+      </div>
+    </div>
+
+    <div class="grid-4">
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 5</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Scarcity Lock</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 410 Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Urgency broadcast: 380/500 seats filled; cloud server node limit warning.</p>
+      </div>
+
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 6</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Final Blitz</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 485 Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Final call across 35 college WhatsApp groups; distribute 3-min zero-setup guide.</p>
+      </div>
+
+      <div class="card" style="padding: 16px;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PHASE 7</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #0f172a; margin: 2px 0 4px;">Live D-Day</h4>
+        <div style="font-size: 0.75rem; font-weight: 700; color: #059669; margin-bottom: 6px;">Target: 525+ Regs</div>
+        <p style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">Cap hit! 3-hour and 15-minute countdown reminders. 68%+ live attendance.</p>
+      </div>
+
+      <div class="card" style="padding: 16px; background: #eff6ff; border-color: #bfdbfe;">
+        <span style="font-size: 0.72rem; font-weight: 700; color: #2563eb;">PROVEN FUNNEL MATH</span>
+        <h4 style="font-size: 0.88rem; font-weight: 700; color: #1e3a8a; margin: 2px 0 4px;">Viral K-Factor (0.35)</h4>
+        <div style="font-size: 0.75rem; color: #1e40af; line-height: 1.45;">
+          • Impressions: 4,500<br>
+          • CTR (28%): 1,260 visits<br>
+          • LP Conv (32%): 403 direct<br>
+          • Viral referrals: +141<br>
+          • <b>Total: 544 Regs (CPA: ₹3.68)</b>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>NxtWave Growth Plan • Slide 4 of 5</span>
+      <span>Launch Sequence & Milestones</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE 5: Working Asset & AI Learnings
+       ========================================== -->
+  <div class="slide-page">
+    <span class="slide-tag">PART 3 & 4: WORKING ASSET & STRATEGIC THINKING</span>
+    <h2 class="slide-title">Interactive Platform Suite & Strategic AI Rejections</h2>
+    <p class="slide-sub">Built with clean developer aesthetics (Inter + JetBrains Mono) and verified strategic thinking</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #2563eb; margin-bottom: 14px;">
+          💻 WORKING ASSET: INTERACTIVE PLATFORM
+        </h3>
+        <ul class="bullet-list">
+          <li><strong>AI Resume Diagnostic Scanner:</strong> Evaluates projects & branch; calculates ATS score jump from 38% → 94% with 1-click bullet point generator.</li>
+          <li><strong>Live 60-Min AI Code Sandbox:</strong> 3 production tracks (RAG Agent, ATS Parser, Vision AI) with Gemini Flash latency testing (240ms) & automated rubric grading (96/100).</li>
+          <li><strong>100 AI Placement Interview Vault:</strong> 100 categorized questions with real-time search across Transformers, RAG, LoRA, Guardrails, and LLMOps.</li>
+          <li><strong>Post-Workshop Certificate Vault:</strong> Accredited credential with 1-click LinkedIn profile sync, golden verification seal, and SHA-256 public registry lookup.</li>
+          <li><strong>Holographic VIP Pass & Study Groups:</strong> Unique pass codes (NW-VIP-XXXX), cloud node allocation, and peer referral tracker.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: #d97706; margin-bottom: 14px;">
+          🧠 STRATEGIC THINKING & AI REJECTIONS
+        </h3>
+        <ul class="bullet-list">
+          <li><strong>1. Rejected Paid Meta / Instagram Ads:</strong> AI suggested spending ₹1,500 on paid ads. Rejected because at ₹80–₹120 CPA, ₹1,500 burns out with &lt;25 signups. Organic viral loops guarantee 500+.</li>
+          <li><strong>2. Rejected 3-Day Mini-Bootcamp:</strong> AI suggested a 3-day multi-hour format. Rejected due to final-year semester exams and placement fatigue. A 60-min sprint achieves 68%+ live attendance.</li>
+          <li><strong>3. Rejected Heavy ML Math Curriculum:</strong> AI proposed teaching backprop and PyTorch tensors. Rejected because 2026 recruiters test practical API integration, vector RAG, and guardrails.</li>
+          <li><strong>If We Had Another 24 Hours:</strong> Would implement Meta Cloud API webhooks for instant WhatsApp ticket dispatch and a live inter-college referral leaderboard.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>NxtWave Growth Plan • Slide 5 of 5</span>
+      <span>Working Asset & Strategic Learnings</span>
+    </div>
+  </div>
+
+</body>
+</html>

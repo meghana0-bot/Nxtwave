@@ -1127,6 +1127,25 @@ function renderGrowthStrategyDossierHtml() {
         <p>Comprehensive strategic plan to acquire 500 final-year engineering students on a ₹2,000 budget.</p>
       </div>
 
+      <!-- Presentation Download Toolbar -->
+      <div class="presentation-download-box">
+        <div class="presentation-download-left">
+          <h4>
+            <i data-lucide="presentation" style="width: 18px; height: 18px; color: #2563eb;"></i>
+            Growth Plan Executive Pitch Deck (5 Slides)
+          </h4>
+          <p>Downloadable submission presentation formatted strictly per guidelines (Max 5 slides / 2 pages).</p>
+        </div>
+        <div class="presentation-download-actions">
+          <a href="./NxtWave_Growth_Plan_Presentation.pptx" download="NxtWave_Growth_Plan_Presentation.pptx" class="btn-ppt-download">
+            <i data-lucide="download" style="width: 14px; height: 14px;"></i> Download PPT (.PPTX)
+          </a>
+          <a href="./NxtWave_Growth_Plan_Presentation.pdf" download="NxtWave_Growth_Plan_Presentation.pdf" target="_blank" class="btn-pdf-download">
+            <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> Download PDF (.PDF)
+          </a>
+        </div>
+      </div>
+
       <div class="dossier-stats-bar">
         <div class="dossier-stat-item">
           <small>TARGET ACQUISITIONS</small>

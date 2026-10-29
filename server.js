@@ -20,7 +20,9 @@ const MIME_TYPES = {
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
-  '.otf': 'font/otf'
+  '.otf': 'font/otf',
+  '.pdf': 'application/pdf',
+  '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 };
 
 function handleRequest(req, res) {
@@ -45,7 +47,7 @@ function handleRequest(req, res) {
         'Content-Type': contentType,
         'Cache-Control': 'no-cache, no-store, must-revalidate'
       });
-      res.end(content, 'utf-8');
+      res.end(content);
     }
   });
 }

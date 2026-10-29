@@ -10,7 +10,10 @@ This submission delivers an end-to-end, battle-tested growth strategy paired wit
 - **Primary Goal:** 500 Verified Registrations
 - **Total Budget:** ₹2,000 INR
 - **Target CPA:** ₹4.00 per registered engineer (vs. industry benchmark ₹45–₹120)
-- **Live Interactive Platform:** [http://localhost:8088](http://localhost:8088)
+- **Live Deployed Platform:** [https://meghana0-bot.github.io/Nxtwave/](https://meghana0-bot.github.io/Nxtwave/)
+- **Local Dev Server:** [http://localhost:8088](http://localhost:8088)
+- **Downloadable Growth Plan (5 Slides PPTX):** [NxtWave_Growth_Plan_Presentation.pptx](https://github.com/meghana0-bot/Nxtwave/raw/main/NxtWave_Growth_Plan_Presentation.pptx)
+- **Downloadable Growth Plan (5 Slides PDF):** [NxtWave_Growth_Plan_Presentation.pdf](https://github.com/meghana0-bot/Nxtwave/raw/main/NxtWave_Growth_Plan_Presentation.pdf)
 
 ---
 
@@ -126,5 +129,7 @@ Open your browser at:
 - [x] Post-workshop Verified Certificate Vault with LinkedIn integration & public registry lookup
 - [x] 100 Curated Technical AI Placement Interview Questions across 8 engineering categories with live search & filters
 - [x] 1-Click PDF Strategy Dossier export for evaluators
+- [x] Downloadable 5-Slide Growth Plan Presentation (.PPTX and .PDF formats ready for evaluators)
+- [x] Live 24/7 Deployed URL on GitHub Pages: https://meghana0-bot.github.io/Nxtwave/
 - [x] AI + Learning Notes with 3 key questions & 3 explicit prompt iteration examples
 - [x] 3-Minute Video Script with timing cues, visual cues, and delivery notes
