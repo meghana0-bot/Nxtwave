@@ -172,10 +172,10 @@ export const sevenDayRoadmap = [
   {
     day: "Phase 3",
     phase: "Viral Referral Expansion (K-factor Activation)",
-    objective: "Activate registered students to invite batchmates to unlock the AI Interview Cheat Sheet.",
+    objective: "Activate registered students to invite batchmates to unlock the 100 AI Placement Interview Questions Vault.",
     targetCumulative: 230,
     milestones: [
-      "Automated WhatsApp push to all early registrants: 'Invite 3 classmates to unlock the 50 AI Interview Questions PDF'.",
+      "Automated WhatsApp push to all early registrants: 'Invite 3 classmates to unlock the 100 AI Placement Interview Questions Vault'.",
       "Club partnership announcements: 4 student tech clubs blast to their official Discord and WhatsApp channels.",
       "Monitor K-factor: Target 1.25 referrals per registrant in core departmental groups."
     ]
@@ -241,7 +241,7 @@ export const copywritingArsenal = [
   {
     channel: "WhatsApp - Class Rep Broadcast (Highest Conversion)",
     headline: "Class Rep Announcement: Final Year Tech Alert",
-    copy: `🚨 *URGENT for Final Year Placements (2025/2026 Batch)* 🚨\n\nGuys, recruiters from TCS, Infosys, Accenture & product startups are straight up rejecting resumes with standard Web Dev / Calculator / Todo projects. 85%+ of shortlisted resumes now feature AI/LLM integration.\n\n*NxtWave is conducting a FREE Hands-On 60-Minute Workshop:*\n🚀 *"Build Your First AI Project in 60 Minutes"*\n\n✅ Build & deploy a live Multimodal AI Agent from scratch\n✅ Add verified GitHub repo & live link to your resume this weekend\n✅ Verified Certificate of AI Competency\n✅ No heavy ML math or GPU needed (Beginner friendly)\n\n⚡ *Only 500 free seats available across colleges*:\n👉 Register in 10 seconds: [LINK]\n\n(P.S. They give you a free AI Interview Questions PDF when you register!)`
+    copy: `🚨 *URGENT for Final Year Placements (2025/2026 Batch)* 🚨\n\nGuys, recruiters from TCS, Infosys, Accenture & product startups are straight up rejecting resumes with standard Web Dev / Calculator / Todo projects. 85%+ of shortlisted resumes now feature AI/LLM integration.\n\n*NxtWave is conducting a FREE Hands-On 60-Minute Workshop:*\n🚀 *"Build Your First AI Project in 60 Minutes"*\n\n✅ Build & deploy a live Multimodal AI Agent from scratch\n✅ Add verified GitHub repo & live link to your resume this weekend\n✅ Verified Certificate of AI Competency\n✅ No heavy ML math or GPU needed (Beginner friendly)\n\n⚡ *Only 500 free seats available across colleges*:\n👉 Register in 10 seconds: [LINK]\n\n(P.S. They give you instant access to the 100 Technical AI Placement Interview Questions Vault when you register!)`
   },
   {
     channel: "WhatsApp - Peer-to-Peer Viral Share (Referral Loop)",
@@ -287,7 +287,7 @@ export const learningNotesData = {
       title: "Example 3: Post-Registration & Live Show-Up Maximizer",
       asked: "How to ensure registered students actually attend the live workshop?",
       aiSuggested: "Send an email reminder 24 hours before and 1 hour before with the Zoom link.",
-      changed: "Replaced ignored college emails with a 3-touch WhatsApp notification system: 1) Instant holographic digital VIP Entry Pass with unique ID & WhatsApp study group link, 2) T-minus 3-hour calendar ping, and 3) T-minus 15-minute 'Host is live + Code repo unlocked' trigger, paired with an unlockable 'Top 50 AI Interview Questions PDF' when inviting 3 classmates."
+      changed: "Replaced ignored college emails with a 3-touch WhatsApp notification system: 1) Instant holographic digital VIP Entry Pass with unique ID & WhatsApp study group link, 2) T-minus 3-hour calendar ping, and 3) T-minus 15-minute 'Host is live + Code repo unlocked' trigger, paired with an unlockable 'Top 100 AI Placement Interview Questions Vault' when inviting 3 classmates."
     }
   ]
 };
@@ -312,7 +312,7 @@ export const videoScriptData = {
       time: "1:15 - 2:15",
       label: "Live Asset Demo: The Workshop Platform",
       visual: "Live walkthrough of the interactive web app: Scanner -> Sandbox -> VIP Pass -> Certificate Vault -> Study Groups",
-      script: "Rather than building just another static landing page, I built a complete Interactive Student Platform. First, the AI Resume Diagnostic Scanner: a student enters their branch and current college project, and within seconds, our algorithm shows them why their resume scores 38% on ATS filters, and how adding this 60-minute Gemini Flash RAG project elevates them to 94%. Second, the Live Code Sandbox: students can test the exact Python architecture across 3 tracks, tweak system prompts, and run our Automated AI Project Evaluator, which benchmarks latency at 240ms. Third, our Digital VIP Pass Generator produces a holographic ticket with server node credentials and WhatsApp study sync. Fourth, our Post-Workshop Verified Certificate Vault gives students an accredited credential with 1-click LinkedIn profile sync and public registry verification. And finally, the Peer Study Group engine drives virality by unlocking interview cheat sheets and starter repositories."
+      script: "Rather than building just another static landing page, I built a complete Interactive Student Platform. First, the AI Resume Diagnostic Scanner: a student enters their branch and current college project, and within seconds, our algorithm shows them why their resume scores 38% on ATS filters, and how adding this 60-minute Gemini Flash RAG project elevates them to 94%. Second, the Live Code Sandbox: students can test the exact Python architecture across 3 tracks, tweak system prompts, and run our Automated AI Project Evaluator, which benchmarks latency at 240ms. Third, our 100 Technical AI Placement Interview Questions Vault, equipped with real-time keyword search and category filtering across Transformers, RAG, LoRA, and LLMOps. Fourth, our Digital VIP Pass Generator produces a holographic ticket with server node credentials and WhatsApp study sync. Fifth, our Post-Workshop Verified Certificate Vault gives students an accredited credential with 1-click LinkedIn sync and public registry lookup. And finally, the Peer Study Group engine drives virality by unlocking interview cheat sheets and starter repositories."
     },
     {
       time: "2:15 - 2:45",

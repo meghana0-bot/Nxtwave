@@ -62,13 +62,37 @@ Unlike standard landing pages that only collect forms, this platform features an
 1. **Workshop Overview & Scarcity Engine:** Live seat counter, real-time college registration toast feed, and urgency countdown timer.
 2. **AI Resume & ATS Placement Diagnostic:** Interactive scanner evaluating branch, target role, and existing projects. Dynamically calculates vulnerabilities, provides an ATS jump from **38% → 94%**, and generates a 1-click copyable resume bullet point.
 3. **Live 60-Minute AI Code Sandbox:** Multi-track simulator (RAG Support Agent, ATS Resume Parser, Vision AI Defect Classifier) with customizable system prompts, sub-250ms latency testing, and automated rubric grading (**96/100 Top Tier Placement Grade**).
-4. **AI Placement Interview Prep:** Technical Q&A bank tackling questions final-year students get asked (RAG vs Fine-Tuning, vector embeddings, cosine similarity, latency mitigation, hallucination guardrails).
+4. **100 Technical AI Placement Interview Questions Vault:** Extensive repository of 100 curated, high-signal technical questions asked by recruiters at AI startups and top-tier product firms. Includes live instant search, 8 category filter chips, expand/collapse toggles, difficulty tags, and 1-click clipboard export for student interview revision.
 5. **Digital Entry Pass Generator:** Dynamic holographic admission credential with personalized student details, unique Pass ID (`NW-VIP-XXXX`), cloud node allocation, verified QR code, and direct WhatsApp sharing.
 6. **Peer Study Groups & Referral Engine:** Automated peer invite links, WhatsApp 1-click sharing, test peer simulator, and unlockable reward milestones (Top 50 Q&A PDF, Production Repo Template, 1-on-1 Mentorship).
 7. **Post-Workshop Verified Certificate Vault & Registry:** High-prestige accredited credential with dynamic student personalization, golden verification seal, 1-click LinkedIn profile sync, PDF download, and public SHA-256 cryptographic registry lookup.
 8. **Growth Strategy Dossier (Executive Reviewer Tab):** Complete strategy, ICP breakdown, 3 prioritized channels, unit economics sensitivity model, and 1-click **PDF print export**.
 9. **AI + Learning Notes:** Detailed documentation of the 3 core strategic questions and 3 concrete examples of "What you asked → What AI suggested → What you changed".
 10. **3-Minute Video Pitch Script:** Full timed delivery script (0:00 to 3:00) with visual cues and stage directions.
+
+---
+
+## 🧠 100 Technical AI Placement Interview Questions (Repository Breakdown)
+
+To equip final-year students with unbeatable technical placement readiness, the platform includes a **100-Question Placement Interview Repository** organized into 8 mission-critical engineering domains:
+
+| Category | Questions | Key Architectural Topics Covered |
+| :--- | :---: | :--- |
+| **1. Transformers & LLM Core** | Q1 – Q14 | Self-attention mechanics, QKV computation, decoder-only causal masking, KV cache memory formulas, GQA vs MHA vs MQA, RoPE relative embeddings, BPE tokenization artifacts, FlashAttention SRAM tiling, MoE gating, Chinchilla scaling laws, RMSNorm, and Lost-in-the-Middle mitigation. |
+| **2. Embeddings & Vectors** | Q15 – Q28 | Dense vs sparse embeddings, Cosine vs Dot Product vs Euclidean distance, HNSW multi-layer skip graphs, IVF-PQ product quantization, Bi-Encoders vs Cross-Encoders, chunking strategies & overlap math, Matryoshka embeddings (MRL), BM25 + dense hybrid search with RRF, Late Chunking, and multimodal CLIP contrastive loss. |
+| **3. RAG Architecture** | Q29 – Q45 | Naive vs Advanced RAG, HyDE (Hypothetical Document Embeddings), Parent-Document hierarchical retrieval, Sentence Window retrieval, 2-stage Cross-Encoder re-ranking, RAGAS metrics (Faithfulness, Precision, Recall, Relevance), GraphRAG community summaries, CRAG & Self-RAG reflection loops, table extraction, and Anthropic Contextual Retrieval. |
+| **4. Prompting & Agents** | Q46 – Q58 | Chain-of-Thought (CoT) token scratchpad mechanics, ReAct pattern (Thought-Action-Observation), Direct & Indirect prompt injection defenses, grammar-guided structured JSON decoding, Tree of Thoughts (ToT), Self-Consistency sampling, function calling under the hood, multi-agent supervisor patterns, and infinite recursion mitigation. |
+| **5. Fine-Tuning & LoRA** | Q59 – Q70 | RAG vs Fine-Tuning decision tree, LoRA low-rank decomposition math ($\Delta W = B \cdot A$), rank ($r$) and alpha ($\alpha$) tuning, QLoRA (NF4 + Double Quantization + Paged Optimizers), RLHF (PPO) vs DPO loss, Catastrophic Forgetting remedies, LIMA quality findings, Alpaca synthetic self-instruct, and GPU memory arithmetic. |
+| **6. Safety & Guardrails** | Q71 – Q82 | Multi-layer guardrail pipeline (Input $\rightarrow$ Model $\rightarrow$ Output), NeMo Guardrails & Colang modeling, Llama Guard hazard taxonomy, PII masking with Microsoft Presidio, Constitutional AI (RLAIF), GCG adversarial triggers, system prompt leak canaries, automated red-teaming, and OWASP Top 10 for LLMs. |
+| **7. LLMOps & Latency** | Q83 – Q93 | TTFT (Time to First Token) vs TPS (Tokens Per Second), PagedAttention (vLLM) memory paging, Speculative Decoding with rejection sampling, SSE vs WebSockets token streaming, Continuous Batching, Semantic Caching (GPTCache), LLM-as-a-Judge bias mitigation, API circuit breakers, OpenTelemetry/Langfuse observability, and Gemini 1.5 Flash architectural advantages. |
+| **8. AI System Design** | Q94 – Q100 | End-to-end design case studies: 100k req/day Enterprise Support Copilot, GitHub PR Automated Code Review Agent, High-Accuracy Legal/Financial Q&A Engine, Campus Placement Resume Screening Engine, Multi-Tenant LLM Gateway with Token Budgeting, Continuous Offline Evaluation Pipeline, and sub-500ms Real-Time Voice Interviewer. |
+
+### Interactive UI Features:
+- 🔍 **Real-Time Instant Search:** Filters dynamically across question text, detailed answers, tags, and categories.
+- 🏷️ **Category Filter Chips:** 1-click pills with dynamic question count badges.
+- ↕️ **Universal Expand / Collapse All:** Instantly open or collapse all matching questions.
+- 📋 **1-Click Plain-Text Answer Copy:** Formatted for easy offline revision and study group sharing.
+- 🎯 **Placement Relevance Badges:** Tagged by `Core`, `Architecture`, `Optimization`, `High Frequency`, and `System Design`.
 
 ---
 
@@ -100,6 +124,7 @@ Open your browser at:
 - [x] Rejection matrix documenting why other ideas were discarded
 - [x] Fully interactive, left-docked working web application
 - [x] Post-workshop Verified Certificate Vault with LinkedIn integration & public registry lookup
+- [x] 100 Curated Technical AI Placement Interview Questions across 8 engineering categories with live search & filters
 - [x] 1-Click PDF Strategy Dossier export for evaluators
 - [x] AI + Learning Notes with 3 key questions & 3 explicit prompt iteration examples
 - [x] 3-Minute Video Script with timing cues, visual cues, and delivery notes

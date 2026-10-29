@@ -15,6 +15,11 @@ import {
   videoScriptData
 } from './data/growthStrategyData.js';
 
+import {
+  interviewQuestions,
+  INTERVIEW_CATEGORIES
+} from './data/interviewQuestionsData.js';
+
 // Interactive Sandbox Tracks
 const sandboxProjects = {
   'rag-agent': {
@@ -191,7 +196,9 @@ const state = {
   evalResult: null,
   isEvaluating: false,
   // Interview FAQ state
-  expandedFaq: 0,
+  interviewSearch: '',
+  interviewCategory: 'all',
+  expandedFaqIds: new Set([1]),
   // Funnel Simulator state
   impressions: 4500,
   ctr: 28, // %
@@ -206,6 +213,17 @@ function refreshIcons() {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+}
+
+// Utility HTML escape helper
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 // Countdown timer loop
@@ -304,6 +322,153 @@ export function navigateTo(viewId) {
   if (sidebar && sidebar.classList.contains('open')) {
     sidebar.classList.remove('open');
   }
+}
+
+// --------------------------------------------------------------------------
+// 100 TECHNICAL INTERVIEW QUESTIONS RENDERER
+// --------------------------------------------------------------------------
+function renderInterviewPrepHtml() {
+  const searchTerm = (state.interviewSearch || '').toLowerCase().trim();
+  const selectedCat = state.interviewCategory || 'all';
+
+  // Filter questions
+  const filtered = interviewQuestions.filter(item => {
+    const matchesCat = selectedCat === 'all' || item.category === selectedCat;
+    if (!matchesCat) return false;
+
+    if (!searchTerm) return true;
+    const matchesQ = item.q.toLowerCase().includes(searchTerm);
+    const matchesA = item.a.toLowerCase().includes(searchTerm);
+    const matchesBadge = item.badge.toLowerCase().includes(searchTerm);
+    const matchesCatName = item.categoryName.toLowerCase().includes(searchTerm);
+    return matchesQ || matchesA || matchesBadge || matchesCatName;
+  });
+
+  const getChipClass = (badge) => {
+    switch (badge) {
+      case 'High Frequency': return 'high-freq';
+      case 'Architecture': return 'arch';
+      case 'Optimization': return 'opt';
+      default: return 'core';
+    }
+  };
+
+  return `
+    <div class="section-view-wrap">
+      <div class="clean-section-header">
+        <span class="clean-badge blue">PLACEMENT KNOWLEDGE REPOSITORY</span>
+        <h2>100 Technical AI &amp; GenAI <span style="color: #2563eb;">Interview Questions</span></h2>
+        <p>
+          Curated conceptual and architectural placement interview questions asked by recruiters at top AI startups, FAANG, and tier-1 product firms when evaluating LLM, RAG, and AI engineering talent.
+        </p>
+      </div>
+
+      <!-- Search & Controls Toolbar -->
+      <div class="interview-toolbar">
+        <div class="interview-search-row">
+          <div class="interview-search-wrap">
+            <i data-lucide="search" class="search-icon"></i>
+            <input 
+              type="text" 
+              id="interview-search-input" 
+              class="interview-search-input" 
+              placeholder="Search all 100 questions (e.g., LoRA, RAG, KV Cache, PagedAttention, Guardrails)..."
+              value="${state.interviewSearch ? escapeHtml(state.interviewSearch) : ''}"
+            />
+            ${state.interviewSearch ? `
+              <button id="interview-search-clear" class="interview-search-clear" title="Clear search">
+                <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+              </button>
+            ` : ''}
+          </div>
+
+          <div class="interview-actions-group">
+            <button id="btn-expand-all-faqs" class="interview-tool-btn" title="Expand All Questions">
+              <i data-lucide="chevrons-down" style="width: 14px; height: 14px;"></i> Expand All
+            </button>
+            <button id="btn-collapse-all-faqs" class="interview-tool-btn" title="Collapse All Questions">
+              <i data-lucide="chevrons-up" style="width: 14px; height: 14px;"></i> Collapse All
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="interview-cats-bar">
+          ${INTERVIEW_CATEGORIES.map(cat => {
+            const isActive = state.interviewCategory === cat.id;
+            return `
+              <button 
+                class="interview-cat-chip ${isActive ? 'active' : ''}" 
+                data-category="${cat.id}"
+              >
+                <span>${cat.label}</span>
+                <span class="count-badge">${cat.count}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Results Status Bar -->
+        <div class="interview-status-bar">
+          <div>
+            Showing <strong>${filtered.length}</strong> of 100 questions 
+            ${selectedCat !== 'all' ? `in <i>"${INTERVIEW_CATEGORIES.find(c => c.id === selectedCat)?.label || selectedCat}"</i>` : ''}
+            ${searchTerm ? `matching <i>"${escapeHtml(searchTerm)}"</i>` : ''}
+          </div>
+          <div style="font-size: 0.75rem; color: #64748b;">
+            Click any question to view in-depth architectural breakdown
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Accordion Grid -->
+      ${filtered.length === 0 ? `
+        <div style="text-align: center; padding: 48px 20px; background: #ffffff; border: 1px dashed var(--border-strong); border-radius: var(--radius-md);">
+          <i data-lucide="search-x" style="width: 40px; height: 40px; color: #94a3b8; margin-bottom: 12px;"></i>
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-bright); margin-bottom: 6px;">No questions found</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">No questions match your current search query or category filter.</p>
+          <button id="btn-reset-faq-filters" class="clean-btn primary" style="font-size: 0.82rem; padding: 8px 16px;">
+            Reset Search &amp; Filters
+          </button>
+        </div>
+      ` : `
+        <div class="faq-grid">
+          ${filtered.map(item => {
+            const isOpen = state.expandedFaqIds && state.expandedFaqIds.has(item.id);
+            return `
+              <div class="faq-card ${isOpen ? 'expanded' : ''}" data-faq-id="${item.id}">
+                <div class="faq-q" onclick="window.toggleFaq(${item.id})">
+                  <div class="faq-q-left">
+                    <span class="faq-q-num">Q#${item.id}</span>
+                    <span class="faq-q-text">${item.q}</span>
+                  </div>
+                  <div class="faq-q-right">
+                    <span class="faq-chip ${getChipClass(item.badge)}">${item.badge}</span>
+                    <i data-lucide="${isOpen ? 'chevron-up' : 'chevron-down'}" class="faq-chevron" style="width: 16px; height: 16px;"></i>
+                  </div>
+                </div>
+                ${isOpen ? `
+                  <div class="faq-a">
+                    ${item.a}
+                    <div class="faq-a-footer">
+                      <div>
+                        <span style="font-weight: 600; color: #64748b;">Category:</span> ${item.categoryName} 
+                        <span style="margin: 0 6px;">•</span> 
+                        <span style="font-weight: 600; color: #64748b;">Relevance:</span> ${item.difficulty}
+                      </div>
+                      <button class="faq-copy-btn" onclick="event.stopPropagation(); window.copyFaqAnswer(${item.id})">
+                        <i data-lucide="copy" style="width: 12px; height: 12px;"></i> Copy Answer
+                      </button>
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `}
+    </div>
+  `;
 }
 
 // --------------------------------------------------------------------------
@@ -566,67 +731,7 @@ function renderViewHtml(viewId) {
     }
 
     case 'interview-prep':
-      return `
-        <div class="section-view-wrap">
-          <div class="clean-section-header">
-            <span class="clean-badge blue">PLACEMENT PREPARATION</span>
-            <h2>Top AI Technical <span style="color: #2563eb;">Interview Questions</span></h2>
-            <p>
-              These are the exact conceptual and architectural questions recruiters ask final-year candidates when they see Generative AI and RAG projects on a resume.
-            </p>
-          </div>
-
-          <div class="faq-grid">
-            <div class="faq-card" onclick="window.toggleFaq(0)">
-              <div class="faq-q">
-                <span>1. What is the fundamental difference between RAG and Fine-Tuning an LLM?</span>
-                <i data-lucide="${state.expandedFaq === 0 ? 'chevron-up' : 'chevron-down'}" style="width: 16px; height: 16px;"></i>
-              </div>
-              ${state.expandedFaq === 0 ? `
-                <div class="faq-a">
-                  <b>Answer:</b> <b>RAG (Retrieval-Augmented Generation)</b> provides the model with external, dynamic reference material in the prompt context window at inference time without modifying model weights. It is cheap, eliminates hallucinations on proprietary data, and allows instant updates. <b>Fine-tuning</b> updates the model's internal weights to adapt tone, format, or specialized syntax, but does not reliably inject new factual knowledge and is much more expensive.
-                </div>
-              ` : ''}
-            </div>
-
-            <div class="faq-card" onclick="window.toggleFaq(1)">
-              <div class="faq-q">
-                <span>2. How do Vector Embeddings and Cosine Similarity enable semantic search?</span>
-                <i data-lucide="${state.expandedFaq === 1 ? 'chevron-up' : 'chevron-down'}" style="width: 16px; height: 16px;"></i>
-              </div>
-              ${state.expandedFaq === 1 ? `
-                <div class="faq-a">
-                  <b>Answer:</b> An embedding model maps text into high-dimensional geometric space (e.g., 768 or 1536 dimensions) where semantically similar concepts cluster together regardless of exact keyword matches. <b>Cosine similarity</b> measures the cosine of the angle between two embedding vectors ($A \\cdot B / (\\|A\\| \\|B\\|)$). A value close to 1 means high conceptual alignment.
-                </div>
-              ` : ''}
-            </div>
-
-            <div class="faq-card" onclick="window.toggleFaq(2)">
-              <div class="faq-q">
-                <span>3. How do you prevent hallucinations in a customer-facing AI Support Agent?</span>
-                <i data-lucide="${state.expandedFaq === 2 ? 'chevron-up' : 'chevron-down'}" style="width: 16px; height: 16px;"></i>
-              </div>
-              ${state.expandedFaq === 2 ? `
-                <div class="faq-a">
-                  <b>Answer:</b> 1) Ground the model by setting temperature to 0.0 or 0.2. 2) Strict system prompt constraint: <i>"Answer ONLY using the provided retrieved context. If the answer is not present, respond 'I do not have enough verified data to answer that'."</i> 3) Post-generation validation assertions (JSON schema validation & guardrail classifiers).
-                </div>
-              ` : ''}
-            </div>
-
-            <div class="faq-card" onclick="window.toggleFaq(3)">
-              <div class="faq-q">
-                <span>4. Why is Gemini Flash ideal for high-throughput production API workflows?</span>
-                <i data-lucide="${state.expandedFaq === 3 ? 'chevron-up' : 'chevron-down'}" style="width: 16px; height: 16px;"></i>
-              </div>
-              ${state.expandedFaq === 3 ? `
-                <div class="faq-a">
-                  <b>Answer:</b> Gemini Flash is engineered for ultra-low latency (sub-250ms first-token latency) and cost efficiency while supporting large multi-modal context windows (up to 1M tokens). This makes it optimal for high-concurrency student and enterprise agentic tasks compared to heavier, slower reasoning models.
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        </div>
-      `;
+      return renderInterviewPrepHtml();
 
     case 'vip-pass':
       return `
@@ -976,7 +1081,7 @@ function renderPerkItemsHtml() {
         ${r >= 1 ? '<i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>' : '<div style="width: 14px; height: 14px; border: 2px solid var(--text-dim); border-radius: 50%;"></div>'}
       </div>
       <div>
-        <strong style="display: block; font-size: 0.85rem; color: var(--text-bright);">1 Classmate: Top 50 AI Interview Questions &amp; Answers (PDF)</strong>
+        <strong style="display: block; font-size: 0.85rem; color: var(--text-bright);">1 Classmate: 100 Technical AI Placement Interview Questions Vault</strong>
         <small style="color: var(--text-muted); font-size: 0.72rem;">${r >= 1 ? 'Unlocked! Ready in dashboard.' : '1 more classmate needed'}</small>
       </div>
     </div>
@@ -1663,6 +1768,96 @@ function bindStageInteractions(viewId) {
       sK.addEventListener('input', updateFunnel);
     }
   }
+
+  // Interview Prep interactions
+  if (viewId === 'interview-prep') {
+    const searchInp = document.getElementById('interview-search-input');
+    if (searchInp) {
+      searchInp.addEventListener('input', (e) => {
+        state.interviewSearch = e.target.value;
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('interview-prep');
+          bindStageInteractions('interview-prep');
+          refreshIcons();
+          const newInp = document.getElementById('interview-search-input');
+          if (newInp) {
+            newInp.focus();
+            const len = newInp.value.length;
+            newInp.setSelectionRange(len, len);
+          }
+        }
+      });
+    }
+
+    const clearBtn = document.getElementById('interview-search-clear');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        state.interviewSearch = '';
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('interview-prep');
+          bindStageInteractions('interview-prep');
+          refreshIcons();
+        }
+      });
+    }
+
+    document.querySelectorAll('.interview-cat-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const cat = chip.getAttribute('data-category');
+        state.interviewCategory = cat;
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('interview-prep');
+          bindStageInteractions('interview-prep');
+          refreshIcons();
+        }
+      });
+    });
+
+    const expandAllBtn = document.getElementById('btn-expand-all-faqs');
+    if (expandAllBtn) {
+      expandAllBtn.addEventListener('click', () => {
+        if (!state.expandedFaqIds) state.expandedFaqIds = new Set();
+        interviewQuestions.forEach(q => state.expandedFaqIds.add(q.id));
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('interview-prep');
+          bindStageInteractions('interview-prep');
+          refreshIcons();
+        }
+      });
+    }
+
+    const collapseAllBtn = document.getElementById('btn-collapse-all-faqs');
+    if (collapseAllBtn) {
+      collapseAllBtn.addEventListener('click', () => {
+        if (!state.expandedFaqIds) state.expandedFaqIds = new Set();
+        state.expandedFaqIds.clear();
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('interview-prep');
+          bindStageInteractions('interview-prep');
+          refreshIcons();
+        }
+      });
+    }
+
+    const resetBtn = document.getElementById('btn-reset-faq-filters');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        state.interviewSearch = '';
+        state.interviewCategory = 'all';
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('interview-prep');
+          bindStageInteractions('interview-prep');
+          refreshIcons();
+        }
+      });
+    }
+  }
 }
 
 // AI Resume Scanner execution
@@ -1930,14 +2125,33 @@ export function closeRegistrationModal() {
 window.appNavigate = navigateTo;
 window.openRegistrationModal = openRegistrationModal;
 window.openRegModal = openRegistrationModal;
-window.toggleFaq = (idx) => {
-  state.expandedFaq = state.expandedFaq === idx ? -1 : idx;
+window.toggleFaq = (id) => {
+  if (!state.expandedFaqIds) {
+    state.expandedFaqIds = new Set();
+  }
+  if (state.expandedFaqIds.has(id)) {
+    state.expandedFaqIds.delete(id);
+  } else {
+    state.expandedFaqIds.add(id);
+  }
   const stage = document.getElementById('stage-viewport-container');
   if (stage) {
     stage.innerHTML = renderViewHtml('interview-prep');
     bindStageInteractions('interview-prep');
     refreshIcons();
   }
+};
+window.copyFaqAnswer = (id) => {
+  const item = interviewQuestions.find(q => q.id === id);
+  if (!item) return;
+  const temp = document.createElement('div');
+  temp.innerHTML = item.a;
+  const plainText = `Q#${item.id}: ${item.q}\n\nAnswer:\n${temp.innerText.trim()}\n\n[Source: NxtWave Generative AI 100 Interview Prep Repository]`;
+  navigator.clipboard.writeText(plainText).then(() => {
+    alert(`Copied answer for Q#${id} to clipboard!`);
+  }).catch(() => {
+    prompt('Copy to clipboard: Ctrl+C, Enter', plainText);
+  });
 };
 window.setDossierTab = (tabId) => {
   state.dossierSubTab = tabId;
