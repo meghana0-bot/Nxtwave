@@ -1,6 +1,6 @@
 // ==========================================================================
 // NXTWAVE GROWTH CHALLENGE - STRATEGIC DATA & CAMPAIGN ARCHITECTURE
-// Target: 500 Final-Year Engineering Registrations in 7 Days (₹2,000 Budget)
+// Target: 500 Final-Year Engineering Registrations (₹2,000 Budget)
 // ==========================================================================
 
 export const campaignMetadata = {
@@ -9,10 +9,9 @@ export const campaignMetadata = {
   targetAudience: "Final-Year Engineering Students (2025/2026 Batch)",
   registrationGoal: 500,
   budget: 2000, // INR
-  durationDays: 7,
   targetCostPerRegistration: 4.0, // ₹2000 / 500 = ₹4.00
   estimatedAttendanceRate: "65-72%",
-  liveRegisteredSimulated: 387,
+  liveRegisteredSimulated: 389,
 };
 
 export const studentPersona = {
@@ -149,7 +148,7 @@ export const budgetAllocation = {
 
 export const sevenDayRoadmap = [
   {
-    day: "Day 1",
+    day: "Phase 1",
     phase: "Foundation & Seed Distribution",
     objective: "Deploy AI Readiness scanner, recruit top 25 Class Reps, configure WhatsApp automated bot.",
     targetCumulative: 60,
@@ -160,7 +159,7 @@ export const sevenDayRoadmap = [
     ]
   },
   {
-    day: "Day 2",
+    day: "Phase 2",
     phase: "The Placement Anxiety Trigger",
     objective: "Drive the core problem awareness; activate LinkedIn peer proof.",
     targetCumulative: 140,
@@ -171,18 +170,18 @@ export const sevenDayRoadmap = [
     ]
   },
   {
-    day: "Day 3",
+    day: "Phase 3",
     phase: "Viral Referral Expansion (K-factor Activation)",
     objective: "Activate registered students to invite batchmates to unlock the AI Interview Cheat Sheet.",
     targetCumulative: 230,
     milestones: [
-      "Automated WhatsApp push to all Day 1 & 2 registrants: 'Invite 3 classmates to unlock the 50 AI Interview Questions PDF'.",
+      "Automated WhatsApp push to all early registrants: 'Invite 3 classmates to unlock the 50 AI Interview Questions PDF'.",
       "Club partnership announcements: 4 student tech clubs blast to their official Discord and WhatsApp channels.",
-      "Monitor K-factor: Target 1.25 referrals per registrant."
+      "Monitor K-factor: Target 1.25 referrals per registrant in core departmental groups."
     ]
   },
   {
-    day: "Day 4",
+    day: "Phase 4",
     phase: "Mid-Campaign Velocity & Teaser Drop",
     objective: "Live teaser of the 60-minute project architecture; overcome technical doubt.",
     targetCumulative: 320,
@@ -193,8 +192,8 @@ export const sevenDayRoadmap = [
     ]
   },
   {
-    day: "Day 5",
-    phase: "Scarcity & Cap Announcement",
+    day: "Phase 5",
+    phase: "Scarcity Lock & Cap Announcement",
     objective: "Introduce capacity constraint; spark urgency.",
     targetCumulative: 410,
     milestones: [
@@ -204,8 +203,8 @@ export const sevenDayRoadmap = [
     ]
   },
   {
-    day: "Day 6",
-    phase: "The Final 24-Hour Blitz",
+    day: "Phase 6",
+    phase: "The Final Registration Blitz",
     objective: "Close remaining 90 seats; initiate pre-workshop setup onboarding.",
     targetCumulative: 485,
     milestones: [
@@ -215,7 +214,7 @@ export const sevenDayRoadmap = [
     ]
   },
   {
-    day: "Day 7",
+    day: "Phase 7",
     phase: "D-Day Execution & Show-Up Maximizer",
     objective: "Hit 500+ registrations, maximize live show-up rate to 68%+.",
     targetCumulative: 525,
@@ -227,9 +226,11 @@ export const sevenDayRoadmap = [
   }
 ];
 
+export const campaignRoadmap = sevenDayRoadmap;
+
 export const funnelMathDefaults = {
   totalTarget: 500,
-  impressions: 4200,
+  impressions: 4500,
   clickThroughRate: 0.28, // 28% CTR on targeted WhatsApp / LinkedIn posts
   landingPageConversion: 0.32, // 32% registration on high-urgency scanner & pass
   referralFactor: 0.35, // Viral K-factor: each registered student brings 0.35 friends
@@ -253,3 +254,78 @@ export const copywritingArsenal = [
     copy: `Unpopular truth about 2026 campus placements:\n\nA resume with a "Hospital Management System" or "E-Commerce Clone" is no longer enough to get shortlisted.\n\nEvery recruiter I've spoken to is filtering for candidates who understand:\n1. How to prompt & integrate LLM APIs\n2. How to build Retrieval-Augmented Generation (RAG)\n3. How to ship real AI-powered features\n\nThis Sunday, I'm building my first live AI project with NxtWave in 60 minutes.\n\nIt's completely free, and you walk away with a deployed project on your GitHub.\n\nIf you're in final year and preparing for drives, don't miss this: [LINK]\n\n#placements #engineering #ai #softwareengineering #nxtwave`
   }
 ];
+
+export const learningNotesData = {
+  threeQuestions: [
+    {
+      q: "1. What changed between your first idea and final solution?",
+      a: "My initial instinct was a traditional landing page paired with cold-emailing college Training & Placement Officers (TPOs) and blasting student notices. I quickly realized this would fail: college bureaucracy takes 2-4 weeks to approve circulars, and student email open rates are below 12%. Simultaneously, generic landing pages suffer from 8-10% conversion because students have 'webinar fatigue'.\n\nI pivoted to an 'Empowerment-First Growth Engine': instead of asking students to sign up blindly, we built an interactive AI Resume Diagnostic Scanner that diagnoses their placement risk in 10 seconds. We replaced slow institutional approvals with hyper-local WhatsApp Class Rep loops (88%+ open rate) and self-fueling peer referral bounties, driving conversion from 12% to 32% and achieving our ₹4.00 CPA target."
+    },
+    {
+      q: "2. If you had another 24 hours, what would you improve?",
+      a: "1) Direct WhatsApp Bot Integration: Connect Meta's Cloud API webhook to auto-dispatch personalized holographic VIP passes and Google Calendar one-click `.ics` invites directly to WhatsApp in real-time.\n2) Automated GitHub Repo Forking: Add an in-browser GitHub OAuth flow where clicking 'Claim Seat' automatically forks the workshop boilerplate repository to the student's profile, giving them immediate proof-of-work momentum before Sunday.\n3) Live Inter-Collegiate Battleboard: Gamify campus signups by showing real-time rivalry counters (e.g., 'JNTUH: 84 vs SRM: 72') to provoke competitive departmental pride."
+    },
+    {
+      q: "3. What did AI suggest that you rejected and why?",
+      a: "1) Paid Meta & Instagram Lead Ads: AI proposed allocating ₹1,500 to Meta Ads targeting B.Tech students. I rejected this because at standard EdTech CPMs (₹250-₹450) and CPCs (₹18-₹35), ₹1,500 would yield only ~50 clicks and ~15-20 registrations (CPA ₹80-₹100). On a ₹2,000 budget, paid acquisition mathematically cannot reach 500.\n2) 3-Day Mini-Bootcamp: AI suggested a 3-day multi-hour workshop. I rejected it because final-year students face high cognitive load, semester exams, and placement interview schedules. A focused 60-minute sprint provides zero-friction commitment and dramatically increases live completion to 68%+.\n3) Heavy Theoretical ML Curriculum: AI recommended teaching Linear Algebra, backpropagation, and PyTorch. I rejected this because junior tech hiring in 2026 evaluates deployable Generative AI API integration, vector retrieval, and prompt guardrails—not theoretical calculus proofs."
+    }
+  ],
+  iterationExamples: [
+    {
+      title: "Example 1: Channel Strategy & Distribution",
+      asked: "How should I allocate a ₹2,000 budget to acquire 500 college student registrations?",
+      aiSuggested: "Spend ₹1,500 on targeted Instagram ads with a catchy video reel, ₹300 on Google Search ads, and ₹200 on WhatsApp blast software.",
+      changed: "Rejected paid ads completely. Repurposed ₹1,000 (50%) directly as a gamified Student Referral Cash Bounty (Top 3 referrers get ₹500, ₹300, ₹200 Amazon vouchers), ₹500 for Class Rep micro-bounties (₹100 recharges for 25+ departmental signups), and ₹300 for WhatsApp Cloud API utility messaging. This turned students into active distribution nodes, achieving a viral multiplier K = 0.35 at ₹4.00 CPA."
+    },
+    {
+      title: "Example 2: Landing Page vs. Interactive Working Asset",
+      asked: "Write copy and layout for a high-converting workshop registration landing page.",
+      aiSuggested: "A standard landing page with a countdown timer, list of topics, instructor profile, and a name/email registration form.",
+      changed: "Transformed the asset from a passive landing page into an interactive 'AI Resume & ATS Placement Diagnostic Scanner' and 'In-Browser AI Code Sandbox'. Students select their current project (e.g. ToDo App or E-Commerce clone) and visually see their ATS score jump from 38% to 94% with the workshop project, turning abstract curiosity into acute urgency."
+    },
+    {
+      title: "Example 3: Post-Registration & Live Show-Up Maximizer",
+      asked: "How to ensure registered students actually attend the live workshop?",
+      aiSuggested: "Send an email reminder 24 hours before and 1 hour before with the Zoom link.",
+      changed: "Replaced ignored college emails with a 3-touch WhatsApp notification system: 1) Instant holographic digital VIP Entry Pass with unique ID & WhatsApp study group link, 2) T-minus 3-hour calendar ping, and 3) T-minus 15-minute 'Host is live + Code repo unlocked' trigger, paired with an unlockable 'Top 50 AI Interview Questions PDF' when inviting 3 classmates."
+    }
+  ]
+};
+
+export const videoScriptData = {
+  duration: "3 Minutes (180 Seconds)",
+  targetAudience: "NxtWave Growth Challenge Evaluators",
+  sections: [
+    {
+      time: "0:00 - 0:30",
+      label: "Hook & Target Student (The 'Why')",
+      visual: "Camera on presenter / Screen showing Arjun Sharma ICP slide & acute placement problem",
+      script: "Hi everyone! Final-year engineering students across Tier-2 and Tier-3 colleges are facing a silent placement crisis. Campus hiring from mass recruiters has dropped, and resumes with standard 2020 projects—like To-Do apps, calculators, or basic e-commerce clones—are filtered out by recruiter ATS systems in seconds. Students don't want another ₹30,000 theory course or a multi-month bootcamp. They want proof of work they can put on their resume this Sunday. That's why our campaign is built around a single razor-sharp promise: 'Build Your First Production AI Project in 60 Minutes' for free."
+    },
+    {
+      time: "0:30 - 1:15",
+      label: "The Growth Strategy & Channel Architecture",
+      visual: "Screen sharing Growth Strategy Dossier: 3 Channels, ₹2,000 Budget, and Funnel Slider",
+      script: "To hit 500 registrations on a lean ₹2,000 budget, we didn't burn money on paid ads, which cost ₹80 to ₹120 per lead. Instead, we prioritized 3 high-leverage organic channels: First, WhatsApp Viral Loops and Class Representatives, driving 50% of registrations. Indian college batches live on unofficial WhatsApp groups. By micro-incentivizing 25 Class Reps with ₹100 mobile recharges and setting up a ₹1,000 viral referral bounty, we turn every registered student into an acquisition node. Second, co-branded Tech Club partnerships like GDSC and ACM, contributing 32%. Third, LinkedIn peer-proof FOMO, contributing 18%. Our math proves that 4,500 impressions at a 28% click-through rate and 32% landing page conversion, plus a 0.35 viral K-factor, delivers 544 verified registrations at exactly ₹3.68 to ₹4.00 CPA."
+    },
+    {
+      time: "1:15 - 2:15",
+      label: "Live Asset Demo: The Workshop Platform",
+      visual: "Live walkthrough of the interactive web app: Scanner -> Sandbox -> VIP Pass -> Study Groups",
+      script: "Rather than building just another static landing page, I built a complete Interactive Student Platform. First, the AI Resume Diagnostic Scanner: a student enters their branch and current college project, and within seconds, our algorithm shows them why their resume scores 38% on ATS filters, and how adding this 60-minute Gemini Flash RAG project elevates them to 94%. Second, the Live Code Sandbox: students can test the exact Python architecture, tweak system prompts, and run our Automated AI Project Evaluator, which benchmarks latency at 240ms and generates a verified Certificate of AI Competency. Third, our Digital VIP Pass Generator produces a holographic ticket with server node credentials and an instant WhatsApp group link. And finally, the Peer Study Group engine lets students unlock the Top 50 AI Interview Questions and starter repos by referring classmates."
+    },
+    {
+      time: "2:15 - 2:45",
+      label: "Strategic Thinking & What We Discarded",
+      visual: "Screen showing 'Show How You Thought' subtab & Rejection Matrix",
+      script: "What really shaped this strategy was what we chose NOT to do. AI initially suggested spending ₹1,500 on Instagram ads—I rejected it because it would have burnt out in 3 hours with fewer than 25 registrations. AI also suggested a 3-day hackathon, which I rejected due to final-year exam fatigue. If I had another 24 hours, I would integrate real-time Meta Cloud API webhooks for instant WhatsApp ticket dispatch and an inter-college leaderboard to spark campus rivalry."
+    },
+    {
+      time: "2:45 - 3:00",
+      label: "Closing & Impact",
+      visual: "Presenter on camera smiling with confident close",
+      script: "In summary, by understanding the student's acute placement anxiety, engineering self-fueling WhatsApp viral loops, and building an interactive asset that delivers immediate value before the workshop even starts, we achieve 500+ high-intent registrations on just ₹2,000. Thank you!"
+    }
+  ]
+};
+

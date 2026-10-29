@@ -1056,3 +1056,73 @@
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   PRINT STYLES FOR 1-CLICK PDF EXPORT
+   Clean, Professional, Publication-Grade White-Paper Formatting
+   ========================================================================== */
+@media print {
+  body.theme-tech-clean {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    background-image: none !important;
+  }
+  
+  .sidebar-dock,
+  .mobile-top-bar,
+  .stage-top-bar,
+  .stage-footer,
+  .toast-stream,
+  #modal-container,
+  .btn-primary-clean,
+  .btn-secondary-clean,
+  .btn-clean-export,
+  .btn-peer-copy,
+  #btn-sim-peer,
+  .dossier-tabs-nav,
+  .stage-actions {
+    display: none !important;
+  }
+
+  .app-layout-sidebar {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .main-stage {
+    margin: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+  }
+
+  .stage-viewport {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .tech-card,
+  .pass-clean-card,
+  .dossier-stats-bar,
+  .scarcity-box {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 20px !important;
+  }
+
+  .dossier-stats-bar {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  h1, h2, h3, h4 {
+    color: #0f172a !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #2563eb !important;
+  }
+}

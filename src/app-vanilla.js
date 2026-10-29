@@ -10,8 +10,159 @@ import {
   budgetAllocation, 
   sevenDayRoadmap, 
   funnelMathDefaults,
-  copywritingArsenal 
+  copywritingArsenal,
+  learningNotesData,
+  videoScriptData
 } from './data/growthStrategyData.js';
+
+// Interactive Sandbox Tracks
+const sandboxProjects = {
+  'rag-agent': {
+    title: '1. Multimodal AI Support Agent (RAG)',
+    fileName: 'agent_rag_gemini.py',
+    badge: 'Gemini 2.5 Flash Connected',
+    badgeClass: 'green',
+    codeHtml: `
+      <p class="code-comment"># Production RAG pipeline engineered in Minutes 15 - 35</p>
+      <p><span class="keyword">import</span> google.generativeai <span class="keyword">as</span> genai</p>
+      <p><span class="keyword">from</span> vector_store <span class="keyword">import</span> KnowledgeBase</p>
+      <br />
+      <p><span class="keyword">def</span> <span class="func">build_rag_agent</span>(user_query: <span class="type">str</span>):</p>
+      <p style="padding-left: 14px;">kb = KnowledgeBase.load_index(<span class="str">"company_faq.bin"</span>)</p>
+      <p style="padding-left: 14px;">context_chunks = kb.similarity_search(user_query, k=3)</p>
+      <br />
+      <p style="padding-left: 14px;">model = genai.GenerativeModel(model_name=<span class="str">"gemini-2.5-flash"</span>)</p>
+      <p style="padding-left: 14px;">response = model.generate_content([system_prompt, f<span class="str">"Context: {context_chunks}\\n\\nQuery: {user_query}"</span>])</p>
+      <p style="padding-left: 14px;"><span class="keyword">return</span> response.text</p>
+    `,
+    defaultPrompt: 'You are an elite customer support engineer. Help the user debug API errors concisely in under 3 lines using only verified FAQ context. Prevent hallucination.',
+    eval: {
+      score: '96 / 100',
+      grade: 'Placement Grade: Top Tier (Shortlist Guarantee)',
+      summary: 'Prompt constraints verified. Guardrails successfully prevented hallucination with sub-250ms latency.',
+      chips: [
+        { label: 'Prompt Engineering', val: '98%', color: '#2563eb' },
+        { label: 'Response Latency', val: '240ms', color: '#059669' },
+        { label: 'Guardrails & Safety', val: '94%', color: '#7c3aed' }
+      ],
+      certProj: 'Multimodal AI Support Agent with Vector Retrieval (Gemini API)'
+    }
+  },
+  'resume-ats': {
+    title: '2. Automated ATS Resume Parser',
+    fileName: 'ats_resume_engine.py',
+    badge: 'Pydantic + Gemini Flash',
+    badgeClass: 'blue',
+    codeHtml: `
+      <p class="code-comment"># Structured ATS Resume Extraction & Scoring</p>
+      <p><span class="keyword">import</span> google.generativeai <span class="keyword">as</span> genai</p>
+      <p><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</p>
+      <br />
+      <p><span class="keyword">class</span> <span class="func">ResumeAudit</span>(BaseModel):</p>
+      <p style="padding-left: 14px;">ats_score: <span class="type">int</span></p>
+      <p style="padding-left: 14px;">is_generic_clone: <span class="type">bool</span></p>
+      <p style="padding-left: 14px;">missing_skills: <span class="type">list[str]</span></p>
+      <br />
+      <p>model = genai.GenerativeModel(model_name=<span class="str">"gemini-2.5-flash"</span>)</p>
+      <p>res = model.generate_content(resume_text, generation_config={<span class="str">"response_mime_type"</span>: <span class="str">"application/json"</span>})</p>
+      <p><span class="keyword">return</span> res.text</p>
+    `,
+    defaultPrompt: 'You are an automated ATS placement filter engine. Parse candidate resumes, extract tech keywords, flag generic clones, and compute an objective 0-100 score.',
+    eval: {
+      score: '94 / 100',
+      grade: 'Placement Grade: Production Ready',
+      summary: 'Schema extraction 100% compliant with Pydantic JSON structure. Zero hallucinated fields with 210ms parse time.',
+      chips: [
+        { label: 'Schema Extraction', val: '99%', color: '#2563eb' },
+        { label: 'Parse Latency', val: '210ms', color: '#059669' },
+        { label: 'Keyword Coverage', val: '92%', color: '#7c3aed' }
+      ],
+      certProj: 'Automated ATS Resume Analyzer with Structured Pydantic Extraction'
+    }
+  },
+  'vision-bot': {
+    title: '3. Vision AI Quality Inspector',
+    fileName: 'vision_defect_classifier.py',
+    badge: 'Gemini Multimodal Vision',
+    badgeClass: 'purple',
+    codeHtml: `
+      <p class="code-comment"># Multimodal Vision Analysis for Hardware Defect Detection</p>
+      <p><span class="keyword">import</span> google.generativeai <span class="keyword">as</span> genai</p>
+      <p><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</p>
+      <br />
+      <p><span class="keyword">def</span> <span class="func">inspect_hardware_pcb</span>(image_path: <span class="type">str</span>):</p>
+      <p style="padding-left: 14px;">img = Image.open(image_path)</p>
+      <p style="padding-left: 14px;">model = genai.GenerativeModel(model_name=<span class="str">"gemini-2.5-flash"</span>)</p>
+      <p style="padding-left: 14px;">res = model.generate_content([system_prompt, img, <span class="str">"Locate solder bridging and classify severity."</span>])</p>
+      <p style="padding-left: 14px;"><span class="keyword">return</span> res.text</p>
+    `,
+    defaultPrompt: 'You are a Vision AI Quality Control Inspector. Analyze hardware PCB images for soldering defects, component misalignments, or pin bridging with confidence scores.',
+    eval: {
+      score: '95 / 100',
+      grade: 'Placement Grade: Top Tier Industrial AI',
+      summary: 'Multi-modal bounding accuracy exceeded 95%. Classified visual defects with sub-280ms inference.',
+      chips: [
+        { label: 'Visual Precision', val: '96%', color: '#2563eb' },
+        { label: 'Inference Latency', val: '280ms', color: '#059669' },
+        { label: 'Multi-modal Tokens', val: '420 tok', color: '#7c3aed' }
+      ],
+      certProj: 'Multi-modal Hardware Vision Defect Classifier with Gemini API'
+    }
+  }
+};
+
+// Intelligent Project Diagnostic Helper
+function analyzeProject(projectText, branch, role) {
+  const p = (projectText || '').toLowerCase();
+  let baseScore = 38;
+  let vulns = [];
+  let recommendation = 'Multimodal AI Customer Support Agent with Vector Embeddings (Gemini 2.5 Flash + LangChain)';
+  let resumeBullet = 'Architected and deployed a low-latency (240ms) RAG agent using Google Gemini 2.5 Flash API and FAISS vector search, cutting hallucination by 92% and serving 100+ simulated concurrent student support queries.';
+
+  if (p.includes('todo') || p.includes('calculator') || p.includes('counter')) {
+    baseScore = 26;
+    vulns = [
+      'Beginner tutorial project detected. 94% of automated ATS systems discard basic To-Do/Calculator apps as non-commercial code.',
+      'Zero cloud API integration, async handling, or database indexing.',
+      'Lacks live production deployment URL or public GitHub CI/CD workflow.'
+    ];
+  } else if (p.includes('hospital') || p.includes('library') || p.includes('hotel') || p.includes('banking') || p.includes('java')) {
+    baseScore = 34;
+    vulns = [
+      'Traditional academic CRUD detected. Typical college submission lacking modern cloud microservices or LLM endpoints.',
+      'Missing modern Generative AI / LLM workflows to automate user triage.',
+      'Relies on monolithic SQL queries rather than vector similarity search.'
+    ];
+  } else if (p.includes('e-commerce') || p.includes('netflix') || p.includes('social') || p.includes('chat') || p.includes('weather')) {
+    baseScore = 42;
+    vulns = [
+      'Common clone architecture. Over 10,000+ candidates apply with similar MERN/React clones every placement cycle.',
+      'Lacks semantic search: keyword searches fail when candidates type synonyms or natural questions.',
+      'No AI-assisted recommendation engine or automated guardrail monitoring.'
+    ];
+  } else {
+    baseScore = 38;
+    vulns = [
+      'Generic web/script project detected. 87% of 2026 tech recruiters filter out applications lacking AI/LLM integration.',
+      'Missing Retrieval-Augmented Generation (RAG) architecture and vector embeddings.',
+      'No verified benchmark metrics or latency observability demonstrated.'
+    ];
+  }
+
+  if (branch === 'ECE' || branch === 'EEE') {
+    vulns.push('Core branch gap: Recruiters look for applied API integration and cloud deployment to validate software placement readiness.');
+  } else if (branch === 'MECH') {
+    vulns.push('Non-tech branch transition: Needs a verified, high-credibility proof-of-work project to clear initial recruiter screening.');
+  }
+
+  return {
+    currentScore: baseScore,
+    projectedScore: 94,
+    vulnerabilities: vulns,
+    recommendation,
+    resumeBullet
+  };
+}
 
 // Application State
 const state = {
@@ -36,7 +187,7 @@ const state = {
   isScanning: false,
   // Project Sandbox state
   activeProjectTab: 'rag-agent',
-  customPrompt: 'You are a senior tech customer support agent. Help the user debug their API key error politely in under 3 lines.',
+  customPrompt: sandboxProjects['rag-agent'].defaultPrompt,
   evalResult: null,
   isEvaluating: false,
   // Interview FAQ state
@@ -350,7 +501,8 @@ function renderViewHtml(viewId) {
         </div>
       `;
 
-    case 'code-sandbox':
+    case 'code-sandbox': {
+      const curTrack = sandboxProjects[state.activeProjectTab] || sandboxProjects['rag-agent'];
       return `
         <div class="section-view-wrap">
           <div class="clean-section-header">
@@ -377,20 +529,13 @@ function renderViewHtml(viewId) {
             <div class="sandbox-grid">
               <div class="code-editor-clean">
                 <div class="editor-header-bar">
-                  <span><i data-lucide="terminal" style="width: 14px; height: 14px;"></i> agent_system_prompt.py</span>
-                  <span class="clean-badge green">Gemini 2.5 Flash Connected</span>
+                  <span><i data-lucide="terminal" style="width: 14px; height: 14px;"></i> ${curTrack.fileName}</span>
+                  <span class="clean-badge ${curTrack.badgeClass}">${curTrack.badge}</span>
                 </div>
 
                 <div class="code-pre-clean">
-                  <p class="code-comment"># Live code engineered in Minutes 15 - 35</p>
-                  <p><span class="keyword">import</span> google.generativeai <span class="keyword">as</span> genai</p>
-                  <p><span class="keyword">from</span> vector_store <span class="keyword">import</span> KnowledgeBase</p>
-                  <br />
-                  <p><span class="keyword">def</span> <span class="func">build_rag_agent</span>(user_query):</p>
-                  <p style="padding-left: 14px;">kb = KnowledgeBase.load_index(<span class="str">"company_faq.bin"</span>)</p>
-                  <p style="padding-left: 14px;">context = kb.similarity_search(user_query, k=3)</p>
-                  <br />
-                  <p style="padding-left: 14px;" class="code-comment"># Interactive Prompt Playground:</p>
+                  ${curTrack.codeHtml}
+                  <p style="padding-left: 14px; margin-top: 10px;" class="code-comment"># Interactive Prompt Playground:</p>
                 </div>
 
                 <div class="form-group">
@@ -418,6 +563,7 @@ function renderViewHtml(viewId) {
           </div>
         </div>
       `;
+    }
 
     case 'interview-prep':
       return `
@@ -500,7 +646,7 @@ function renderViewHtml(viewId) {
             <div class="pass-content-body">
               <div style="flex: 1;">
                 <span class="clean-badge blue" style="margin-bottom: 8px;">BATCH OF 2025/2026</span>
-                <div class="pass-user-name">${state.registeredUser.fullName || 'Arjun Sharma'}</div>
+                <div class="pass-user-name">${state.registeredUser.fullName || 'Arjun Sharma (Demo Pass)'}</div>
                 <div class="pass-college-name">${state.registeredUser.college || 'Engineering College'} • ${state.registeredUser.branch}</div>
 
                 <div class="pass-meta-table">
@@ -522,20 +668,33 @@ function renderViewHtml(viewId) {
                   </div>
                 </div>
 
-                <a 
-                  href="https://chat.whatsapp.com/demo" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  class="btn-whatsapp-clean"
-                >
-                  <i data-lucide="smartphone"></i> Join Official Workshop WhatsApp Group
-                </a>
+                <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+                  <a 
+                    href="https://wa.me/?text=${encodeURIComponent('I just secured my VIP Admission Pass for NxtWave\'s free live workshop: Build Your First AI Project in 60 Minutes! Claim your seat before 500 cap: https://nxtwave.ai/ai60')}" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    class="btn-whatsapp-clean"
+                  >
+                    <i data-lucide="smartphone"></i> Share Pass on WhatsApp
+                  </a>
+
+                  ${!state.isRegistered ? `
+                    <button class="btn-primary-clean" onclick="window.openRegistrationModal()" style="padding: 10px 16px; font-size: 0.84rem;">
+                      <i data-lucide="edit-3"></i> Claim With Your Name &amp; College
+                    </button>
+                  ` : `
+                    <button class="btn-secondary-clean" onclick="window.print()" style="padding: 10px 16px; font-size: 0.84rem;">
+                      <i data-lucide="printer"></i> Download / Print Pass (PDF)
+                    </button>
+                  `}
+                </div>
               </div>
 
               <div class="qr-clean-box">
                 <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://nxtwave.ai/workshop/confirmed" 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://nxtwave.ai/workshop/confirmed?pass=${state.registeredUser.passCode}" 
                   alt="Entry QR"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'130\\' height=\\'130\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'%232563eb\\' stroke-width=\\'2\\'><rect x=\\'3\\' y=\\'3\\' width=\\'7\\' height=\\'7\\'/><rect x=\\'14\\' y=\\'3\\' width=\\'7\\' height=\\'7\\'/><rect x=\\'14\\' y=\\'14\\' width=\\'7\\' height=\\'7\\'/><rect x=\\'3\\' y=\\'14\\' width=\\'7\\' height=\\'7\\'/><line x1=\\'7\\' y1=\\'7\\' x2=\\'7\\' y2=\\'7\\'/><line x1=\\'17\\' y1=\\'17\\' x2=\\'17\\' y2=\\'17\\'/></svg>'"
                 />
                 <small>Scan For Zoom Entry</small>
               </div>
@@ -682,14 +841,14 @@ function renderGrowthStrategyDossierHtml() {
       <div class="clean-section-header">
         <span class="clean-badge purple">NXTWAVE GROWTH CHALLENGE • EVALUATION DOSSIER</span>
         <h2>Growth Strategy &amp; <span style="color: #7c3aed;">Viral Acquisition Engine</span></h2>
-        <p>Comprehensive strategic plan to acquire 500 final-year engineering students in 7 days on a ₹2,000 budget.</p>
+        <p>Comprehensive strategic plan to acquire 500 final-year engineering students on a ₹2,000 budget.</p>
       </div>
 
       <div class="dossier-stats-bar">
         <div class="dossier-stat-item">
           <small>TARGET ACQUISITIONS</small>
           <strong>500+ Students</strong>
-          <span>Final Year B.Tech</span>
+          <span>Final Year B.Tech (2025/2026)</span>
         </div>
         <div class="dossier-stat-item">
           <small>ALLOCATED BUDGET</small>
@@ -698,13 +857,13 @@ function renderGrowthStrategyDossierHtml() {
         </div>
         <div class="dossier-stat-item">
           <small>VIRAL COEFFICIENT</small>
-          <strong style="color: #2563eb;">K &gt; 1.25</strong>
-          <span>WhatsApp Referral Loops</span>
+          <strong style="color: #2563eb;">K = 0.35 / &gt; 1.25</strong>
+          <span>Campus Blended / Class Reps</span>
         </div>
         <div class="dossier-stat-item">
           <small>PROJECTED SHOW-UP</small>
           <strong style="color: #d97706;">68%+ Live</strong>
-          <span>Automated 3-Touch Drips</span>
+          <span>~370 Attendees (3-Touch Drips)</span>
         </div>
       </div>
 
@@ -720,16 +879,22 @@ function renderGrowthStrategyDossierHtml() {
           3. The 3 Channels &amp; Rejection Matrix
         </button>
         <button class="dossier-tab-btn ${state.dossierSubTab === 'budget' ? 'active' : ''}" onclick="window.setDossierTab('budget')">
-          4. ₹2,000 Budget &amp; Unit Economics
+          4. ₹2,000 Budget &amp; Economics
         </button>
         <button class="dossier-tab-btn ${state.dossierSubTab === 'roadmap' ? 'active' : ''}" onclick="window.setDossierTab('roadmap')">
-          5. 7-Day Execution Roadmap
+          5. Tactical Launch Roadmap
         </button>
         <button class="dossier-tab-btn ${state.dossierSubTab === 'funnel' ? 'active' : ''}" onclick="window.setDossierTab('funnel')">
           6. Interactive Funnel Math
         </button>
         <button class="dossier-tab-btn ${state.dossierSubTab === 'copy' ? 'active' : ''}" onclick="window.setDossierTab('copy')">
           7. Copywriting Arsenal
+        </button>
+        <button class="dossier-tab-btn ${state.dossierSubTab === 'learning-notes' ? 'active' : ''}" onclick="window.setDossierTab('learning-notes')">
+          8. AI + Learning Notes
+        </button>
+        <button class="dossier-tab-btn ${state.dossierSubTab === 'video-script' ? 'active' : ''}" onclick="window.setDossierTab('video-script')">
+          9. 3-Minute Video Script
         </button>
       </div>
 
@@ -819,7 +984,7 @@ function renderDossierSubTabContent() {
           <h4 style="color: #dc2626; font-size: 1rem; margin-bottom: 8px;">Rejection Matrix: Why We Killed The Other 17 Ideas</h4>
           <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5;">
             • <b>Paid Meta/Google Ads:</b> High CAC (₹50-₹120) exhausts ₹2,000 budget in 3 hours.<br />
-            • <b>Official TPO Emails:</b> College bureaucracy takes 2-4 weeks; fatal for a 7-day sprint.<br />
+            • <b>Official TPO Emails:</b> College bureaucracy takes 2-4 weeks; far too slow for an agile campaign.<br />
             • <b>Cold Emailing:</b> Indian students rarely open official college webmails (&lt;12% open rate).<br />
             • <b>Notice Board Posters:</b> Physical friction; zero measurable tracking.
           </p>
@@ -868,7 +1033,7 @@ function renderDossierSubTabContent() {
     case 'roadmap':
       return `
         <div>
-          <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 14px;">7-Day Day-by-Day Tactical Execution Plan</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 14px;">Milestone-Driven Execution Roadmap &amp; Launch Sequence</h3>
           <div style="display: flex; flex-direction: column; gap: 12px;">
             ${sevenDayRoadmap.map(r => `
               <div style="background: #ffffff; border: 1px solid var(--border-card); border-left: 3px solid #2563eb; border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm);">
@@ -1000,6 +1165,105 @@ function renderDossierSubTabContent() {
           </div>
         </div>
       `;
+
+    case 'learning-notes':
+      return `
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div>
+              <span class="clean-badge purple">SHOW US HOW YOU THOUGHT</span>
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-top: 4px;">AI + Learning Notes &amp; Strategic Pivot Analysis</h3>
+            </div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 22px;">
+            Documentation of our strategic thought process, critical decision trade-offs, and how we refined AI suggestions into a high-converting, execution-ready plan.
+          </p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; color: var(--text-bright);">
+            Part 1: The Three Core Strategic Questions
+          </h4>
+
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
+            ${learningNotesData.threeQuestions.map(item => `
+              <div style="background: #ffffff; border: 1px solid var(--border-card); border-left: 4px solid #2563eb; border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm);">
+                <strong style="color: #2563eb; display: block; font-size: 0.95rem; margin-bottom: 8px;">${item.q}</strong>
+                <p style="font-size: 0.85rem; color: var(--text-main); line-height: 1.6; white-space: pre-wrap;">${item.a}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; color: var(--text-bright);">
+            Part 2: 3 Concrete Examples of "What I Asked → What AI Suggested → What I Changed"
+          </h4>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            ${learningNotesData.iterationExamples.map(ex => `
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 16px;">
+                <strong style="color: var(--text-bright); font-size: 0.95rem; display: block; margin-bottom: 10px;">${ex.title}</strong>
+                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.84rem;">
+                  <div style="background: #f1f5f9; padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid #64748b;">
+                    <b style="color: #475569;">What I Asked:</b> <span>${ex.asked}</span>
+                  </div>
+                  <div style="background: #fef2f2; padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid #ef4444;">
+                    <b style="color: #b91c1c;">What AI Suggested:</b> <span>${ex.aiSuggested}</span>
+                  </div>
+                  <div style="background: #ecfdf5; padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid #10b981;">
+                    <b style="color: #047857;">What I Changed &amp; Why:</b> <span>${ex.changed}</span>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'video-script':
+      return `
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div>
+              <span class="clean-badge blue">3-MINUTE VIDEO PITCH SCRIPT</span>
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-top: 4px;">Word-for-Word Video Presentation Guide (180s)</h3>
+            </div>
+            <button class="btn-primary-clean" style="padding: 6px 14px; font-size: 0.8rem;" onclick="window.copyAllVideoScript()">
+              <i data-lucide="copy" style="width: 14px; height: 14px;"></i> Copy Full Script
+            </button>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;">
+            Structured, high-energy delivery script formatted with timing marks, on-screen visual prompts, and exact spoken text for your video recording.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            ${videoScriptData.sections.map((sec, i) => `
+              <div style="background: #ffffff; border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span class="mono" style="background: #eff6ff; color: #2563eb; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); font-size: 0.78rem;">
+                    ⏱ ${sec.time}
+                  </span>
+                  <strong style="color: var(--text-bright); font-size: 0.92rem;">${sec.label}</strong>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 8px 12px; border-radius: var(--radius-sm); margin-bottom: 10px; font-size: 0.78rem; color: #475569;">
+                  <b>Visual Cue:</b> ${sec.visual}
+                </div>
+
+                <p style="font-size: 0.86rem; color: #1e293b; line-height: 1.6;">
+                  "${sec.script}"
+                </p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); padding: 16px; margin-top: 20px;">
+            <h4 style="color: #166534; font-size: 0.92rem; margin-bottom: 6px;">🎥 Recording Delivery Tips</h4>
+            <ul style="padding-left: 18px; font-size: 0.82rem; color: #166534; line-height: 1.55;">
+              <li><b>Confidence &amp; Pace:</b> Speak at a conversational, confident pace (~130 words per minute).</li>
+              <li><b>Screen Share Timing:</b> Keep your face in the corner (Loom style) while demonstrating the live AI Resume Scanner and Code Sandbox at 1:15.</li>
+              <li><b>Emphasize Economics:</b> Stress the ₹4.00 CPA vs ₹80-₹120 paid ad benchmark—evaluators look closely at unit economics!</li>
+            </ul>
+          </div>
+        </div>
+      `;
     default:
       return '';
   }
@@ -1038,9 +1302,18 @@ function bindStageInteractions(viewId) {
   if (viewId === 'code-sandbox') {
     document.querySelectorAll('.sandbox-select-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.sandbox-select-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.activeProjectTab = btn.getAttribute('data-tab');
+        const tab = btn.getAttribute('data-tab');
+        state.activeProjectTab = tab;
+        const track = sandboxProjects[tab];
+        if (track) {
+          state.customPrompt = track.defaultPrompt;
+        }
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('code-sandbox');
+          bindStageInteractions('code-sandbox');
+          refreshIcons();
+        }
       });
     });
 
@@ -1147,8 +1420,10 @@ function bindStageInteractions(viewId) {
 function handleExecuteScan() {
   const branchInp = document.getElementById('scanner-branch-input');
   const projInp = document.getElementById('scanner-proj-val');
+  const roleInp = document.getElementById('scanner-role-input');
   if (branchInp) state.scannerBranch = branchInp.value;
   if (projInp) state.currentProject = projInp.value;
+  if (roleInp) state.targetRole = roleInp.value;
 
   const outArea = document.getElementById('scanner-results-area');
   if (!outArea) return;
@@ -1158,16 +1433,18 @@ function handleExecuteScan() {
     <div class="scanner-placeholder scanning-pulse">
       <div class="pulse-ring-clean"></div>
       <h4>Benchmarking Against 2026 Tech Recruiter ATS...</h4>
-      <p>Comparing "${state.currentProject}" against product startup and mass recruiter criteria.</p>
+      <p>Comparing "${state.currentProject}" against product startup and mass recruiter criteria for ${state.scannerBranch} graduates.</p>
     </div>
   `;
 
   setTimeout(() => {
+    const diag = analyzeProject(state.currentProject, state.scannerBranch, state.targetRole);
+
     outArea.innerHTML = `
       <h3 class="scanner-step-title">2. AI Diagnosis &amp; Shortlist Projection</h3>
       <div class="score-banner-clean">
         <div class="score-col risk">
-          <span class="score-val">38%</span>
+          <span class="score-val">${diag.currentScore}%</span>
           <span class="score-desc">Current ATS AI Score (High Risk)</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; color: var(--text-dim);">
@@ -1175,7 +1452,7 @@ function handleExecuteScan() {
           <small style="font-size: 0.68rem; margin-top: 4px;">After 60-min Sprint</small>
         </div>
         <div class="score-col ready">
-          <span class="score-val">94%</span>
+          <span class="score-val">${diag.projectedScore}%</span>
           <span class="score-desc">Projected AI Shortlist Score</span>
         </div>
       </div>
@@ -1183,9 +1460,7 @@ function handleExecuteScan() {
       <div class="vulnerability-card">
         <h4><i data-lucide="alert-triangle" style="width: 15px; height: 15px;"></i> Detected Placement Vulnerabilities</h4>
         <ul>
-          <li>Generic CRUD app detected. 87% of 2026 tech recruiters filter out basic e-commerce / weather apps.</li>
-          <li>Missing LLM / Generative AI API integration &amp; RAG memory.</li>
-          <li>No live cloud deployment link on resume bullet points.</li>
+          ${diag.vulnerabilities.map(v => `<li>${v}</li>`).join('')}
         </ul>
       </div>
 
@@ -1193,8 +1468,18 @@ function handleExecuteScan() {
         <div style="font-size: 0.68rem; font-weight: 700; color: #1e40af; text-transform: uppercase; margin-bottom: 2px;">
           PRESCRIBED 60-MIN WORKSHOP PROJECT
         </div>
-        <h4>Multimodal AI Customer Support Agent with Vector Embeddings (Gemini API + LangChain)</h4>
+        <h4>${diag.recommendation}</h4>
         <p>Adding this verified project elevates your resume ranking from bottom 25% to top 8% of applicants.</p>
+
+        <div style="background: #ffffff; border: 1px dashed #93c5fd; border-radius: var(--radius-sm); padding: 10px 12px; margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <small style="color: #1e40af; font-weight: 700;">ATS RESUME BULLET POINT YOU UNLOCK:</small>
+            <button class="btn-secondary-clean" style="padding: 2px 8px; font-size: 0.7rem;" onclick="navigator.clipboard.writeText('${diag.resumeBullet}'); alert('Resume bullet point copied to clipboard!');">
+              <i data-lucide="copy" style="width: 11px; height: 11px;"></i> Copy
+            </button>
+          </div>
+          <code style="font-size: 0.74rem; color: #334155; line-height: 1.4; display: block; font-family: var(--font-mono);">${diag.resumeBullet}</code>
+        </div>
       </div>
 
       <button class="btn-primary-clean w-100" style="margin-top: 14px;" id="btn-claim-from-diag">
@@ -1207,13 +1492,18 @@ function handleExecuteScan() {
     if (claimBtn) {
       claimBtn.addEventListener('click', openRegistrationModal);
     }
-  }, 1200);
+  }, 1100);
 }
 
 // Project Evaluator execution
 function handleRunProjectEvaluation() {
+  const promptInput = document.getElementById('eval-custom-prompt');
+  if (promptInput) state.customPrompt = promptInput.value;
+
   const reportBox = document.getElementById('eval-report-box');
   if (!reportBox) return;
+
+  const track = sandboxProjects[state.activeProjectTab] || sandboxProjects['rag-agent'];
 
   reportBox.innerHTML = `
     <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
@@ -1221,7 +1511,7 @@ function handleRunProjectEvaluation() {
     </h4>
     <div class="scanner-placeholder scanning-pulse" style="min-height: 260px;">
       <div class="pulse-ring-clean"></div>
-      <p>Testing prompt resilience, token latency, and security guardrails...</p>
+      <p>Testing prompt resilience, token latency, and security guardrails for ${track.fileName}...</p>
     </div>
   `;
 
@@ -1232,28 +1522,22 @@ function handleRunProjectEvaluation() {
       </h4>
 
       <div class="eval-score-card">
-        <div class="eval-score-big">96 / 100</div>
+        <div class="eval-score-big">${track.eval.score}</div>
         <div>
-          <strong style="color: var(--text-bright); font-size: 0.95rem;">Placement Grade: Top Tier (Shortlist Guarantee)</strong>
+          <strong style="color: var(--text-bright); font-size: 0.95rem;">${track.eval.grade}</strong>
           <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">
-            Prompt constraints verified. Guardrails successfully prevented hallucination with sub-250ms latency.
+            ${track.eval.summary}
           </p>
         </div>
       </div>
 
       <div class="eval-rubric-chips">
-        <div class="eval-chip-clean">
-          <small>Prompt Engineering</small>
-          <strong style="color: #2563eb;">98%</strong>
-        </div>
-        <div class="eval-chip-clean">
-          <small>Response Latency</small>
-          <strong style="color: #059669;">240ms</strong>
-        </div>
-        <div class="eval-chip-clean">
-          <small>Guardrails &amp; Safety</small>
-          <strong style="color: #7c3aed;">94%</strong>
-        </div>
+        ${track.eval.chips.map(c => `
+          <div class="eval-chip-clean">
+            <small>${c.label}</small>
+            <strong style="color: ${c.color};">${c.val}</strong>
+          </div>
+        `).join('')}
       </div>
 
       <!-- Certificate Preview -->
@@ -1266,7 +1550,7 @@ function handleRunProjectEvaluation() {
           </div>
         </div>
         <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
-          This certifies that <b>${state.registeredUser.fullName || 'Arjun Sharma'}</b> has successfully architected, integrated, and deployed a production Generative AI Agent in under 60 minutes.
+          This certifies that <b>${state.registeredUser.fullName || 'Arjun Sharma'}</b> has successfully architected, integrated, and deployed <b>${track.eval.certProj}</b> in under 60 minutes.
         </p>
         <button class="btn-secondary-clean w-100" onclick="alert('LinkedIn share template and verification badge copied to clipboard!')">
           <i data-lucide="share-2" style="width: 14px; height: 14px;"></i> Add Verified Credential to LinkedIn Profile
@@ -1278,7 +1562,7 @@ function handleRunProjectEvaluation() {
     if (window.confetti) {
       window.confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 } });
     }
-  }, 1300);
+  }, 1100);
 }
 
 // --------------------------------------------------------------------------
@@ -1390,6 +1674,8 @@ export function closeRegistrationModal() {
 
 // Global hooks for in-HTML onclicks
 window.appNavigate = navigateTo;
+window.openRegistrationModal = openRegistrationModal;
+window.openRegModal = openRegistrationModal;
 window.toggleFaq = (idx) => {
   state.expandedFaq = state.expandedFaq === idx ? -1 : idx;
   const stage = document.getElementById('stage-viewport-container');
@@ -1411,6 +1697,11 @@ window.setDossierTab = (tabId) => {
 window.copyCopyText = (idx) => {
   navigator.clipboard.writeText(copywritingArsenal[idx].copy);
   alert('Copied to clipboard!');
+};
+window.copyAllVideoScript = () => {
+  const full = videoScriptData.sections.map(s => `[${s.time}] ${s.label}\nVISUAL CUE: ${s.visual}\nSPOKEN SCRIPT: "${s.script}"\n`).join('\n----------------------------------------\n\n');
+  navigator.clipboard.writeText(full);
+  alert('Full 3-Minute Video Script copied to clipboard!');
 };
 
 // --------------------------------------------------------------------------

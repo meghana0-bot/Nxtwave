@@ -1,5 +1,5 @@
-# 🚀 NxtWave Growth Challenge — Round 1 Submission
-### *Acquiring 500 Final-Year Engineering Students in 7 Days on a ₹2,000 Budget*
+# 🚀 NxtWave Growth Challenge — Submission
+### *Acquiring 500 Final-Year Engineering Students on a ₹2,000 Budget*
 **Mission:** Drive 500 high-intent registrations for NxtWave's free live workshop: *"Build Your First AI Project in 60 Minutes"*.
 
 ---
@@ -7,7 +7,7 @@
 ## 📌 Executive Overview
 This submission delivers an end-to-end, battle-tested growth strategy paired with a **live interactive web platform** specifically engineered for final-year engineering students facing placement anxiety.
 
-- **Primary Goal:** 500 Verified Registrations in 7 Days
+- **Primary Goal:** 500 Verified Registrations
 - **Total Budget:** ₹2,000 INR
 - **Target CPA:** ₹4.00 per registered engineer (vs. industry benchmark ₹45–₹120)
 - **Live Interactive Platform:** [http://localhost:8088](http://localhost:8088)
@@ -44,28 +44,30 @@ This submission delivers an end-to-end, battle-tested growth strategy paired wit
 - **WhatsApp Cloud API & Delivery (₹300 / 15%):** Meta Cloud API outbound utility messaging (~₹0.40/session) for instant admission pass delivery and 24-hr reminder drips.
 - **Infrastructure & Creative Buffer (₹200 / 10%):** Short-link tracking setup and dynamic banner rendering.
 
-### 3. 7-Day Tactical Execution Roadmap
-- **Day 1 (Foundation):** Deploy AI Resume Diagnostic tool, recruit 25 Class Reps, configure WhatsApp auto-dispatch. Target: 60 registrations.
-- **Day 2 (Placement Anxiety Spike):** Release LinkedIn case study on ATS rejections; first departmental WhatsApp wave. Target: 140 cumulative.
-- **Day 3 (Viral Referral Expansion):** Unlockable incentive: *"Invite 3 classmates to unlock 50 AI Placement Interview Questions"*. Target: 230 cumulative.
-- **Day 4 (Technical Proof Drop):** 45-second screen recording of the deployed RAG Agent; micro-AMA in WhatsApp community. Target: 320 cumulative.
-- **Day 5 (Scarcity Lock):** Urgency announcement: 380/500 seats filled; server capacity limit broadcast. Target: 410 cumulative.
-- **Day 6 (24-Hour Blitz):** Final call across 35 college groups; distribute 3-minute pre-workshop zero-setup guide. Target: 485 cumulative.
-- **Day 7 (D-Day & Show-Up Maximizer):** Cap hit (500+). Automated WhatsApp 3-hour and 15-minute countdown reminders with 1-click room joining link. Target: 525+ registered, 68%+ live show-up rate.
+### 3. Tactical Launch Roadmap & Milestones Execution Plan
+- **Phase 1 (Foundation & Seed Distribution):** Deploy AI Resume Diagnostic tool, recruit 25 Class Reps, configure WhatsApp auto-dispatch. Target: 60 registrations.
+- **Phase 2 (Placement Anxiety Spike):** Release LinkedIn case study on ATS rejections; first departmental WhatsApp wave. Target: 140 cumulative.
+- **Phase 3 (Viral Referral Expansion):** Unlockable incentive: *"Invite 3 classmates to unlock 50 AI Placement Interview Questions"*. Target: 230 cumulative.
+- **Phase 4 (Technical Proof Drop):** 45-second screen recording of the deployed RAG Agent; micro-AMA in WhatsApp community. Target: 320 cumulative.
+- **Phase 5 (Scarcity Lock & Capacity Warning):** Urgency announcement: 380/500 seats filled; server capacity limit broadcast. Target: 410 cumulative.
+- **Phase 6 (The Final Registration Blitz):** Final call across 35 college groups; distribute 3-minute pre-workshop zero-setup guide. Target: 485 cumulative.
+- **Phase 7 (D-Day Live Workshop & Show-Up Maximizer):** Cap hit (500+). Automated WhatsApp 3-hour and 15-minute countdown reminders with 1-click room joining link. Target: 525+ registered, 68%+ live show-up rate.
 
 ---
 
 ## 🛠️ Part 3: Build One Thing — The Interactive Web Platform
 
-Unlike standard landing pages that only collect forms, this platform features an **integrated student empowerment suite** built with a modern engineering aesthetic (**Inter** + **JetBrains Mono** on slate `#090c15`) and a **docked left sidebar navigation**:
+Unlike standard landing pages that only collect forms, this platform features an **integrated student empowerment suite** built with a clean, modern engineering aesthetic (**Inter** + **JetBrains Mono** on slate white `#f8fafc`) and a **docked left sidebar navigation**:
 
 1. **Workshop Overview & Scarcity Engine:** Live seat counter, real-time college registration toast feed, and urgency countdown timer.
-2. **AI Resume & ATS Placement Diagnostic:** Interactive scanner evaluating branch, target role, and existing projects. Demonstrates an immediate **38% → 94% score improvement** upon adding the workshop project.
-3. **Live 60-Minute AI Code Sandbox:** Interactive Gemini Flash API simulator testing system prompts, vector retrieval latency (**240ms**), and automated rubric grading (**96/100 Top Tier Placement Grade**).
+2. **AI Resume & ATS Placement Diagnostic:** Interactive scanner evaluating branch, target role, and existing projects. Dynamically calculates vulnerabilities, provides an ATS jump from **38% → 94%**, and generates a 1-click copyable resume bullet point.
+3. **Live 60-Minute AI Code Sandbox:** Multi-track simulator (RAG Support Agent, ATS Resume Parser, Vision AI Defect Classifier) with customizable system prompts, sub-250ms latency testing, and automated rubric grading (**96/100 Top Tier Placement Grade**).
 4. **AI Placement Interview Prep:** Technical Q&A bank tackling questions final-year students get asked (RAG vs Fine-Tuning, vector embeddings, cosine similarity, latency mitigation, hallucination guardrails).
-5. **Digital Entry Pass Generator:** Dynamic holographic admission credential with unique Pass ID (`NW-VIP-4891`), cloud node allocation, verified QR code, and direct WhatsApp study group sync.
-6. **Peer Study Groups & Referral Engine:** Automated peer invite links, WhatsApp 1-click sharing, and unlockable reward milestones (Starter Repo Kit, 50 Placement Interview Qs, 1-on-1 Mentorship).
-7. **Growth Strategy Dossier (Executive Reviewer Tab):** Complete strategy, unit economics sensitivity model, and 1-click **PDF print export**.
+5. **Digital Entry Pass Generator:** Dynamic holographic admission credential with personalized student details, unique Pass ID (`NW-VIP-XXXX`), cloud node allocation, verified QR code, and direct WhatsApp sharing.
+6. **Peer Study Groups & Referral Engine:** Automated peer invite links, WhatsApp 1-click sharing, test peer simulator, and unlockable reward milestones (Top 50 Q&A PDF, Production Repo Template, 1-on-1 Mentorship).
+7. **Growth Strategy Dossier (Executive Reviewer Tab):** Complete strategy, ICP breakdown, 3 prioritized channels, unit economics sensitivity model, and 1-click **PDF print export**.
+8. **AI + Learning Notes:** Detailed documentation of the 3 core strategic questions and 3 concrete examples of "What you asked → What AI suggested → What you changed".
+9. **3-Minute Video Pitch Script:** Full timed delivery script (0:00 to 3:00) with visual cues and stage directions.
 
 ---
 
@@ -92,8 +94,10 @@ Open your browser at:
 - [x] Clear ICP definition with acute placement psychographics
 - [x] 3 prioritized low-cost distribution channels with K-factor math
 - [x] ₹2,000 budget allocation achieving ₹4.00 CPA
-- [x] 7-day tactical roadmap with hourly milestone checkpoints
+- [x] Tactical launch roadmap with milestone checkpoints
 - [x] Production-ready copywriting arsenal for WhatsApp & LinkedIn
 - [x] Rejection matrix documenting why other ideas were discarded
 - [x] Fully interactive, left-docked working web application
 - [x] 1-Click PDF Strategy Dossier export for evaluators
+- [x] AI + Learning Notes with 3 key questions & 3 explicit prompt iteration examples
+- [x] 3-Minute Video Script with timing cues, visual cues, and delivery notes
