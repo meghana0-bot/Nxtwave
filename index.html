@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
+  <title>Build Your First AI Project in 60 Minutes | NxtWave Live Workshop</title>
+  <meta name="description"
+    content="Hands-on 60-minute live workshop for final-year engineering students to architect, build, and deploy a production AI Agent with Gemini API." />
+
+  <!-- Professional Engineering Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons & Canvas Confetti -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/index.css" />
+  <link rel="stylesheet" href="./src/App.css" />
+</head>
+
+<body class="theme-tech-clean">
+  <div id="app" class="app-layout-sidebar">
+
+    <!-- MOBILE TOP BAR -->
+    <div class="mobile-top-bar">
+      <div class="mobile-brand">
+        <div class="brand-monogram">NW</div>
+        <span>NxtWave AI Workshop</span>
+      </div>
+      <button id="mobile-menu-toggle" class="btn-sidebar-toggle" aria-label="Toggle Navigation">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- LEFT SIDEBAR NAVIGATION DOCK -->
+    <aside class="sidebar-dock" id="sidebar-dock">
+      <div class="sidebar-header">
+        <div class="brand-crest">
+          <div class="crest-icon">
+            <i data-lucide="cpu"></i>
+          </div>
+          <div class="brand-crest-info">
+            <span class="crest-name">NxtWave</span>
+            <span class="crest-subtitle">AI ENGINEERING LAB</span>
+          </div>
+        </div>
+        <div class="live-status-pill">
+          <span class="status-dot"></span> Live Admissions Active
+        </div>
+      </div>
+
+      <nav class="sidebar-nav-scroll">
+        <!-- GROUP 1: STUDENT BENEFICIAL MODULES -->
+        <div class="nav-section-label">STUDENT WORKSHOP SUITE</div>
+
+        <button class="nav-item-btn active" data-view="workshop-overview">
+          <div class="nav-icon"><i data-lucide="layers"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">Workshop Overview</span>
+            <span class="nav-secondary">Curriculum &amp; Live Seat Claim</span>
+          </div>
+          <span class="nav-badge-pill" id="badge-seats-left">111 Left</span>
+        </button>
+
+        <button class="nav-item-btn" data-view="ai-scanner">
+          <div class="nav-icon"><i data-lucide="scan-line"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">AI Resume Diagnostic</span>
+            <span class="nav-secondary">ATS Placement Filter Audit</span>
+          </div>
+          <span class="nav-badge-tag blue">Scanner</span>
+        </button>
+
+        <button class="nav-item-btn" data-view="code-sandbox">
+          <div class="nav-icon"><i data-lucide="code-2"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">Live Code Sandbox</span>
+            <span class="nav-secondary">RAG &amp; Gemini Flash Playground</span>
+          </div>
+          <span class="nav-badge-tag green">Interactive</span>
+        </button>
+
+        <button class="nav-item-btn" data-view="interview-prep">
+          <div class="nav-icon"><i data-lucide="help-circle"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">AI Interview Prep</span>
+            <span class="nav-secondary">Technical Placement Q&amp;A</span>
+          </div>
+        </button>
+
+        <button class="nav-item-btn" data-view="vip-pass">
+          <div class="nav-icon"><i data-lucide="ticket"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">Your Entry Pass</span>
+            <span class="nav-secondary">Digital Admission Credential</span>
+          </div>
+        </button>
+
+        <button class="nav-item-btn" data-view="peer-perks">
+          <div class="nav-icon"><i data-lucide="users"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">Peer Study Groups</span>
+            <span class="nav-secondary">Unlock Starter Packs &amp; Rewards</span>
+          </div>
+        </button>
+
+        <!-- GROUP 2: EVALUATION DOSSIER (FOR REVIEWERS) -->
+        <div class="nav-section-label mt-4">REVIEWER SUBMISSION</div>
+
+        <button class="nav-item-btn war-room-item" data-view="growth-strategy">
+          <div class="nav-icon"><i data-lucide="trending-up"></i></div>
+          <div class="nav-text">
+            <span class="nav-primary">Growth Strategy Dossier</span>
+            <span class="nav-secondary">Channels, Funnel Math &amp; Plan</span>
+          </div>
+          <span class="nav-badge-tag purple">Round 1</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="btn-clean-export" onclick="window.print()">
+          <i data-lucide="printer"></i>
+          <span>Export Strategy Dossier (PDF)</span>
+        </button>
+        <div class="footer-meta-pill">
+          <span>60-Min Practical AI Sprint</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN STAGE -->
+    <main class="main-stage">
+      <!-- TOP STAGE BAR -->
+      <header class="stage-top-bar">
+        <div class="stage-status-strip">
+          <span class="status-indicator">
+            <span class="live-pulse"></span> Free Online Hands-On Workshop
+          </span>
+          <span class="stage-sep">•</span>
+          <span class="status-metric">Schedule: <b>Sunday, 6:00 PM IST</b></span>
+          <span class="stage-sep">•</span>
+          <span class="status-metric">Format: <b>Live Interactive Coding (60 Mins)</b></span>
+        </div>
+
+        <div class="stage-actions">
+          <button class="btn-primary-clean" id="btn-quick-register">
+            <i data-lucide="sparkles"></i> Claim Free Seat
+          </button>
+        </div>
+      </header>
+
+      <!-- VIEWPORT CONTAINER -->
+      <div id="stage-viewport-container" class="stage-viewport"></div>
+
+      <!-- STAGE FOOTER -->
+      <footer class="stage-footer">
+        <div class="stage-footer-content">
+          <div>
+            <strong>NxtWave: Build Your First AI Project in 60 Minutes</strong>
+            <p>Designed for final-year engineering students to bridge syllabus gaps with production Generative AI
+              skills.</p>
+          </div>
+          <div class="stage-footer-badges">
+            <span class="clean-badge">100% Free</span>
+            <span class="clean-badge">No GPU Required</span>
+            <span class="clean-badge">Deployable Project</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- Registration Modal -->
+  <div id="modal-container"></div>
+
+  <!-- Live Toast Stream -->
+  <div class="toast-stream" id="toast-container"></div>
+
+  <!-- Core App Logic -->
+  <script type="module" src="./src/app-vanilla.js"></script>
+</body>
+
+</html>
