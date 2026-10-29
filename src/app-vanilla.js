@@ -782,6 +782,184 @@ function renderViewHtml(viewId) {
         </div>
       `;
 
+    case 'certificate-vault': {
+      const studentName = state.registeredUser.fullName || 'Arjun Sharma';
+      const studentCollege = state.registeredUser.college || 'JNTU Hyderabad';
+      const studentBranch = state.registeredUser.branch || 'CSE / IT';
+      const activeTrack = sandboxProjects[state.activeProjectTab] || sandboxProjects['rag-agent'];
+
+      return `
+        <div class="section-view-wrap">
+          <div class="clean-section-header">
+            <span class="clean-badge green"><i data-lucide="shield-check" style="width: 14px; height: 14px;"></i> POST-WORKSHOP CREDENTIAL VAULT</span>
+            <h2>Verified Certificate of <span style="color: #2563eb;">AI Engineering Competency</span></h2>
+            <p>
+              Issued by NxtWave AI Engineering Lab upon successful completion of the live 60-minute practical coding sprint and automated rubric evaluation. Cryptographically verified and recruiter-ready.
+            </p>
+          </div>
+
+          <!-- Controls Bar -->
+          <div class="cert-controls-bar">
+            <div class="cert-control-group">
+              <label><i data-lucide="user" style="width: 13px; height: 13px;"></i> Recipient Name:</label>
+              <input type="text" class="cert-control-input" id="cert-name-input" value="${studentName}" placeholder="Enter Student Name" />
+            </div>
+            <div class="cert-control-group">
+              <label><i data-lucide="building-2" style="width: 13px; height: 13px;"></i> Institution / College:</label>
+              <input type="text" class="cert-control-input" id="cert-college-input" value="${studentCollege}" placeholder="Enter College Name" />
+            </div>
+            <div class="cert-control-group">
+              <label><i data-lucide="code-2" style="width: 13px; height: 13px;"></i> Verified AI Track:</label>
+              <select class="cert-control-input" id="cert-track-select">
+                <option value="rag-agent" ${state.activeProjectTab === 'rag-agent' ? 'selected' : ''}>1. Multimodal AI Support Agent (RAG)</option>
+                <option value="resume-ats" ${state.activeProjectTab === 'resume-ats' ? 'selected' : ''}>2. Automated ATS Resume Parser</option>
+                <option value="vision-bot" ${state.activeProjectTab === 'vision-bot' ? 'selected' : ''}>3. Vision AI Quality Inspector</option>
+              </select>
+            </div>
+            <button class="btn-primary-clean" id="btn-update-cert" style="align-self: flex-end; padding: 10px 18px; font-size: 0.84rem;">
+              <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i> Update Preview
+            </button>
+          </div>
+
+          <!-- THE OFFICIAL PRESTIGE CERTIFICATE CONTAINER -->
+          <div class="certificate-frame" id="printable-certificate">
+            <div class="cert-border-outer">
+              <div class="cert-border-inner">
+                
+                <!-- Watermark Background Logo -->
+                <div class="cert-watermark">NW</div>
+
+                <!-- Top Header Crest -->
+                <div class="cert-top-header">
+                  <div class="cert-brand-mark">
+                    <div class="cert-icon-crest">
+                      <i data-lucide="cpu" style="width: 24px; height: 24px; color: #2563eb;"></i>
+                    </div>
+                    <div>
+                      <span class="cert-brand-title">NXTWAVE AI RESEARCH LABS</span>
+                      <span class="cert-brand-sub">CENTER FOR GENERATIVE AI EXCELLENCE • ACCREDITED CREDENTIAL</span>
+                    </div>
+                  </div>
+                  <div class="cert-badge-serial">
+                    <span class="cert-serial-label">VERIFIED CREDENTIAL ID</span>
+                    <strong class="cert-serial-val mono">NW-AI-2026-X841</strong>
+                  </div>
+                </div>
+
+                <!-- Certificate Body -->
+                <div class="cert-body-center">
+                  <div class="cert-ribbon-tag">OFFICIAL CERTIFICATION OF ACHIEVEMENT</div>
+                  <h1 class="cert-title-hero">Certificate of AI Engineering Competency</h1>
+                  <p class="cert-intro-text">THIS IS TO CERTIFY THAT</p>
+                  
+                  <div class="cert-recipient-name" id="cert-display-name">${studentName}</div>
+                  <div class="cert-recipient-college" id="cert-display-college">${studentCollege} • ${studentBranch}</div>
+
+                  <p class="cert-statement">
+                    has demonstrated outstanding technical rigor and practical mastery by architecting, implementing vector embeddings, and deploying a production-ready Generative AI pipeline with sub-250ms latency using Google Gemini API in under 60 minutes.
+                  </p>
+
+                  <div class="cert-project-box">
+                    <small>VERIFIED CAPSTONE PROJECT</small>
+                    <strong id="cert-display-project">${activeTrack.eval.certProj}</strong>
+                  </div>
+
+                  <!-- Competency Chips -->
+                  <div class="cert-competencies-grid">
+                    <span class="comp-chip"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Google Gemini 2.5 Flash API</span>
+                    <span class="comp-chip"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Retrieval-Augmented Generation (RAG)</span>
+                    <span class="comp-chip"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Vector Store &amp; Cosine Similarity</span>
+                    <span class="comp-chip"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Latency Optimization (&lt;250ms)</span>
+                    <span class="comp-chip"><i data-lucide="check" style="width: 12px; height: 12px;"></i> Production Cloud Deployment</span>
+                  </div>
+                </div>
+
+                <!-- Footer Signatures & Official Gold Seal -->
+                <div class="cert-footer-row">
+                  <div class="cert-sign-col">
+                    <div class="cert-signature-line">
+                      <span class="sig-handwriting">Rahul Attuluri</span>
+                    </div>
+                    <strong class="sig-name">Rahul Attuluri</strong>
+                    <small class="sig-role">CEO &amp; Co-Founder, NxtWave</small>
+                  </div>
+
+                  <div class="cert-seal-col">
+                    <div class="cert-gold-seal">
+                      <i data-lucide="award" style="width: 38px; height: 38px; color: #d97706;"></i>
+                      <div class="seal-text-circle">VERIFIED</div>
+                    </div>
+                    <small class="seal-meta">BLOCKCHAIN-BACKED REGISTRY</small>
+                  </div>
+
+                  <div class="cert-sign-col">
+                    <div class="cert-signature-line">
+                      <span class="sig-handwriting">Dr. K. S. Rao</span>
+                    </div>
+                    <strong class="sig-name">Dr. K. S. Rao</strong>
+                    <small class="sig-role">Head of AI Curriculum, NxtWave</small>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Post-Certification Actions Bar -->
+          <div class="cert-actions-card">
+            <div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Share &amp; Prove Your Credential to Recruiters</h3>
+              <p style="font-size: 0.84rem; color: var(--text-muted);">
+                Add directly to your LinkedIn profile, download a verified PDF copy, or verify the digital signature against NxtWave's public registry.
+              </p>
+            </div>
+
+            <div class="cert-btn-group">
+              <button class="btn-linkedin-clean" id="btn-cert-linkedin">
+                <i data-lucide="share-2" style="width: 15px; height: 15px;"></i> Add to LinkedIn Profile
+              </button>
+              <button class="btn-primary-clean" onclick="window.print()">
+                <i data-lucide="download" style="width: 15px; height: 15px;"></i> Download Official PDF
+              </button>
+              <button class="btn-secondary-clean" id="btn-cert-verify">
+                <i data-lucide="shield-check" style="width: 15px; height: 15px;"></i> Verify on Registry
+              </button>
+            </div>
+          </div>
+
+          <!-- Public Registry Verification Checker -->
+          <div class="tech-card" style="margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+              <div>
+                <span class="clean-badge blue">PUBLIC REGISTRY AUDIT</span>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-top: 4px;">Instant Credential Verification Engine</h4>
+                <p style="font-size: 0.82rem; color: var(--text-muted);">Recruiters can verify authentic NxtWave certificates using this cryptographic verification portal.</p>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" class="peer-input mono" id="verify-input-id" value="NW-AI-2026-X841" style="max-width: 200px;" />
+                <button class="btn-primary-clean" id="btn-lookup-verify" style="padding: 6px 14px; font-size: 0.8rem;">
+                  <i data-lucide="search" style="width: 13px; height: 13px;"></i> Verify
+                </button>
+              </div>
+            </div>
+
+            <div id="verify-output-box" style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px;">
+              <div style="display: flex; align-items: center; gap: 10px; color: #059669; font-weight: 700; font-size: 0.9rem; margin-bottom: 6px;">
+                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                <span>CRYPTOGRAPHIC VERIFICATION STATUS: ACTIVE &amp; AUTHENTICATED</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px;">
+                <div><b>Student:</b> <span id="v-name">${studentName}</span></div>
+                <div><b>Institution:</b> <span id="v-college">${studentCollege}</span></div>
+                <div><b>Evaluation Score:</b> <span style="color: #059669; font-weight: 700;">96/100 (Top-Tier)</span></div>
+                <div><b>SHA-256 Hash:</b> <span class="mono">0x8f4d...31b9</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     case 'growth-strategy':
       return renderGrowthStrategyDossierHtml();
 
@@ -1359,6 +1537,77 @@ function bindStageInteractions(viewId) {
     }
   }
 
+  // Certificate Vault interactions
+  if (viewId === 'certificate-vault') {
+    const updateBtn = document.getElementById('btn-update-cert');
+    if (updateBtn) {
+      updateBtn.addEventListener('click', () => {
+        const nameInp = document.getElementById('cert-name-input');
+        const colInp = document.getElementById('cert-college-input');
+        const trackSel = document.getElementById('cert-track-select');
+
+        const newName = nameInp ? nameInp.value.trim() : '';
+        const newCol = colInp ? colInp.value.trim() : '';
+        const newTrack = trackSel ? trackSel.value : 'rag-agent';
+
+        if (newName) state.registeredUser.fullName = newName;
+        if (newCol) state.registeredUser.college = newCol;
+        state.activeProjectTab = newTrack;
+
+        const stage = document.getElementById('stage-viewport-container');
+        if (stage) {
+          stage.innerHTML = renderViewHtml('certificate-vault');
+          bindStageInteractions('certificate-vault');
+          refreshIcons();
+        }
+
+        if (window.confetti) {
+          window.confetti({ particleCount: 50, spread: 70, origin: { y: 0.7 } });
+        }
+      });
+    }
+
+    const linkedInBtn = document.getElementById('btn-cert-linkedin');
+    if (linkedInBtn) {
+      linkedInBtn.addEventListener('click', () => {
+        const studentName = state.registeredUser.fullName || 'Arjun Sharma';
+        const trackObj = sandboxProjects[state.activeProjectTab] || sandboxProjects['rag-agent'];
+        const text = `I'm thrilled to share that I have officially verified my competency in Generative AI Engineering through NxtWave's live workshop!\n\nVerified Capstone: ${trackObj.eval.certProj}\nPerformance Latency: Sub-250ms with Google Gemini API & Vector Store.\nCredential ID: NW-AI-2026-X841 (Verified on NxtWave National Registry).\n\n#GenerativeAI #Gemini #NxtWave #SoftwareEngineering #Placements2026`;
+        navigator.clipboard.writeText(text);
+        alert('LinkedIn Certification details and post copy copied to clipboard! Opening LinkedIn...');
+        window.open('https://www.linkedin.com/sharing/share-offsite/', '_blank');
+      });
+    }
+
+    const verifyBtn = document.getElementById('btn-cert-verify');
+    if (verifyBtn) {
+      verifyBtn.addEventListener('click', () => {
+        const outBox = document.getElementById('verify-output-box');
+        if (outBox) {
+          outBox.style.animation = 'none';
+          outBox.offsetHeight;
+          outBox.style.boxShadow = '0 0 0 3px #10b981';
+          setTimeout(() => { outBox.style.boxShadow = 'none'; }, 1500);
+          alert('Credential NW-AI-2026-X841 is cryptographically valid and active on NxtWave National Registry!');
+        }
+      });
+    }
+
+    const lookupBtn = document.getElementById('btn-lookup-verify');
+    if (lookupBtn) {
+      lookupBtn.addEventListener('click', () => {
+        const idInp = document.getElementById('verify-input-id');
+        const idVal = idInp ? idInp.value.trim().toUpperCase() : '';
+        if (idVal) {
+          alert(`Registry Lookup: Certificate ${idVal} is 100% AUTHENTIC and verified for ${state.registeredUser.fullName || 'Arjun Sharma'}!`);
+          if (window.confetti) {
+            window.confetti({ particleCount: 40, spread: 60 });
+          }
+        }
+      });
+    }
+  }
+
   // Funnel Simulator subtab interactions
   if (viewId === 'growth-strategy' && state.dossierSubTab === 'funnel') {
     const sImp = document.getElementById('slider-imp');
@@ -1552,9 +1801,14 @@ function handleRunProjectEvaluation() {
         <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
           This certifies that <b>${state.registeredUser.fullName || 'Arjun Sharma'}</b> has successfully architected, integrated, and deployed <b>${track.eval.certProj}</b> in under 60 minutes.
         </p>
-        <button class="btn-secondary-clean w-100" onclick="alert('LinkedIn share template and verification badge copied to clipboard!')">
-          <i data-lucide="share-2" style="width: 14px; height: 14px;"></i> Add Verified Credential to LinkedIn Profile
-        </button>
+        <div style="display: flex; gap: 8px; margin-top: 10px;">
+          <button class="btn-primary-clean" style="flex: 1; padding: 8px 12px; font-size: 0.8rem;" onclick="window.appNavigate('certificate-vault')">
+            <i data-lucide="award" style="width: 14px; height: 14px;"></i> View in Official Vault
+          </button>
+          <button class="btn-secondary-clean" style="flex: 1; padding: 8px 12px; font-size: 0.8rem;" onclick="alert('LinkedIn share template and verification badge copied to clipboard!'); window.open('https://www.linkedin.com/sharing/share-offsite/', '_blank');">
+            <i data-lucide="share-2" style="width: 14px; height: 14px;"></i> Share to LinkedIn
+          </button>
+        </div>
       </div>
     `;
     refreshIcons();

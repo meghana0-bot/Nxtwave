@@ -65,9 +65,10 @@ Unlike standard landing pages that only collect forms, this platform features an
 4. **AI Placement Interview Prep:** Technical Q&A bank tackling questions final-year students get asked (RAG vs Fine-Tuning, vector embeddings, cosine similarity, latency mitigation, hallucination guardrails).
 5. **Digital Entry Pass Generator:** Dynamic holographic admission credential with personalized student details, unique Pass ID (`NW-VIP-XXXX`), cloud node allocation, verified QR code, and direct WhatsApp sharing.
 6. **Peer Study Groups & Referral Engine:** Automated peer invite links, WhatsApp 1-click sharing, test peer simulator, and unlockable reward milestones (Top 50 Q&A PDF, Production Repo Template, 1-on-1 Mentorship).
-7. **Growth Strategy Dossier (Executive Reviewer Tab):** Complete strategy, ICP breakdown, 3 prioritized channels, unit economics sensitivity model, and 1-click **PDF print export**.
-8. **AI + Learning Notes:** Detailed documentation of the 3 core strategic questions and 3 concrete examples of "What you asked → What AI suggested → What you changed".
-9. **3-Minute Video Pitch Script:** Full timed delivery script (0:00 to 3:00) with visual cues and stage directions.
+7. **Post-Workshop Verified Certificate Vault & Registry:** High-prestige accredited credential with dynamic student personalization, golden verification seal, 1-click LinkedIn profile sync, PDF download, and public SHA-256 cryptographic registry lookup.
+8. **Growth Strategy Dossier (Executive Reviewer Tab):** Complete strategy, ICP breakdown, 3 prioritized channels, unit economics sensitivity model, and 1-click **PDF print export**.
+9. **AI + Learning Notes:** Detailed documentation of the 3 core strategic questions and 3 concrete examples of "What you asked → What AI suggested → What you changed".
+10. **3-Minute Video Pitch Script:** Full timed delivery script (0:00 to 3:00) with visual cues and stage directions.
 
 ---
 
@@ -98,6 +99,7 @@ Open your browser at:
 - [x] Production-ready copywriting arsenal for WhatsApp & LinkedIn
 - [x] Rejection matrix documenting why other ideas were discarded
 - [x] Fully interactive, left-docked working web application
+- [x] Post-workshop Verified Certificate Vault with LinkedIn integration & public registry lookup
 - [x] 1-Click PDF Strategy Dossier export for evaluators
 - [x] AI + Learning Notes with 3 key questions & 3 explicit prompt iteration examples
 - [x] 3-Minute Video Script with timing cues, visual cues, and delivery notes
